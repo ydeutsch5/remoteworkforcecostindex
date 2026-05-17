@@ -1,0 +1,418 @@
+{
+  "metadata": {
+    "country": "Philippines",
+    "currency": "PHP",
+    "exchangeRateUSD": 61.61,
+    "exchangeRateDate": "2026-05-17",
+    "lastUpdated": "May 2026",
+    "scope": "Monthly base compensation for remote workers employed by international (primarily US-based) organizations. Figures reflect market rates paid by foreign employers, which typically exceed local Philippine market rates by 50–120 percent.",
+    "notes": "PHP equivalents calculated at USD/PHP 61.61 (May 17, 2026). Ranges represent 30th–70th percentile of reported compensation; outlier observations above the 90th percentile are excluded. Data aggregated from Glassdoor Philippines, Payscale Philippines, Indeed Philippines, Arc.dev, and SalaryExpert, all accessed May 2026."
+  },
+  "sections": {
+    "A": "Software and technical roles",
+    "B": "Operations and design roles",
+    "C": "Specialized roles"
+  },
+  "roles": [
+    {
+      "id": "software-engineer-mid",
+      "role": "Software Engineer, mid-level",
+      "section": "A",
+      "yearsExperience": "3–5",
+      "medianMonthlyUSD": 1600,
+      "percentile30USD": 1000,
+      "percentile70USD": 2200,
+      "medianMonthlyPHP": 98576,
+      "percentile30PHP": 61610,
+      "percentile70PHP": 135542,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Indeed Philippines reports a local average of ₱41,065/month for software engineers at all experience levels. International remote rates reflect a premium for foreign-language proficiency and US-timezone alignment. Manila-based workers typically earn toward the upper range.",
+      "sources": [
+        {
+          "name": "Glassdoor Philippines — Software Engineer Salaries (Manila)",
+          "url": "https://www.glassdoor.com/Salaries/manila-philippines-software-engineer-salary-SRCH_IL.0,18_IM995_KO19,36.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed Philippines — Software Engineer Salaries",
+          "url": "https://ph.indeed.com/career/software-engineer/salaries",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Arc.dev — Remote Software Engineer Salary Philippines",
+          "url": "https://arc.dev/salaries/software-engineers-in-philippines",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "senior-software-engineer",
+      "role": "Senior Software Engineer",
+      "section": "A",
+      "yearsExperience": "5–8",
+      "medianMonthlyUSD": 2500,
+      "percentile30USD": 1700,
+      "percentile70USD": 3500,
+      "medianMonthlyPHP": 154025,
+      "percentile30PHP": 104737,
+      "percentile70PHP": 215635,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Senior engineers with cloud architecture experience (AWS, GCP, Azure) command the upper range. Compensation shows high variance between US-based employer categories.",
+      "sources": [
+        {
+          "name": "Glassdoor Manila — Senior Software Engineer Salaries",
+          "url": "https://www.glassdoor.com/Salaries/manila-philippines-senior-software-engineer-salary-SRCH_IL.0,18_IM995_KO19,43.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Levels.fyi — Software Engineer Philippines",
+          "url": "https://www.levels.fyi/t/software-engineer/locations/philippines",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "full-stack-developer",
+      "role": "Full-Stack Developer",
+      "section": "A",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 1700,
+      "percentile30USD": 1100,
+      "percentile70USD": 2300,
+      "medianMonthlyPHP": 104737,
+      "percentile30PHP": 67771,
+      "percentile70PHP": 141703,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Philippine full-stack developers are well-represented in the US startup ecosystem. React/Node.js and Vue/Laravel stacks are most common in posted remote roles.",
+      "sources": [
+        {
+          "name": "Second Talent — Philippines Developer Rate Card",
+          "url": "https://www.secondtalent.com/developer-rate-card/philippines/",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed Philippines — Full Stack Developer Salaries",
+          "url": "https://ph.indeed.com/career/full-stack-developer/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "devops-engineer",
+      "role": "DevOps Engineer",
+      "section": "A",
+      "yearsExperience": "3–7",
+      "medianMonthlyUSD": 1800,
+      "percentile30USD": 1100,
+      "percentile70USD": 2600,
+      "medianMonthlyPHP": 110898,
+      "percentile30PHP": 67771,
+      "percentile70PHP": 160186,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Glassdoor Manila (accessed May 2026) reports a median of ₱80,000/month for DevOps roles across all employer types. International remote rates for senior DevOps engineers with Kubernetes/Terraform experience reach the upper range of this table.",
+      "sources": [
+        {
+          "name": "Glassdoor Manila — DevOps Engineer Salaries",
+          "url": "https://www.glassdoor.com/Salaries/manila-philippines-devops-engineer-salary-SRCH_IL.0,18_IM995_KO19,34.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Second Talent — DevOps Engineer Rate Card Philippines",
+          "url": "https://www.secondtalent.com/developer-rate-card/devops-engineer-philippines/",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "data-analyst",
+      "role": "Data Analyst",
+      "section": "A",
+      "yearsExperience": "2–5",
+      "medianMonthlyUSD": 1100,
+      "percentile30USD": 700,
+      "percentile70USD": 1600,
+      "medianMonthlyPHP": 67771,
+      "percentile30PHP": 43127,
+      "percentile70PHP": 98576,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Data analysts specializing in business intelligence tools (Tableau, Power BI) and SQL command a premium at the upper range. Python/R proficiency adds 15–25% in reported ranges.",
+      "sources": [
+        {
+          "name": "Glassdoor Philippines — Data Analyst Salaries",
+          "url": "https://www.glassdoor.com/Salaries/philippines-data-analyst-salary-SRCH_IL.0,11_IN204_KO12,24.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed Philippines — Data Analyst Salaries",
+          "url": "https://ph.indeed.com/career/data-analyst/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "data-scientist",
+      "role": "Data Scientist",
+      "section": "A",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 1600,
+      "percentile30USD": 1100,
+      "percentile70USD": 2200,
+      "medianMonthlyPHP": 98576,
+      "percentile30PHP": 67771,
+      "percentile70PHP": 135542,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Senior data scientists with 8+ years of experience report annual compensation of ₱1,330,842 (approximately ₱110,904/month, or $1,800/month) per Glassdoor Philippines data. Mid-level ranges are lower.",
+      "sources": [
+        {
+          "name": "Glassdoor Philippines — Data Scientist Salaries",
+          "url": "https://www.glassdoor.com/Salaries/philippines-data-scientist-salary-SRCH_IL.0,11_IN204_KO12,26.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Payscale Philippines — Data Scientist Salary",
+          "url": "https://www.payscale.com/research/PH/Job=Data_Scientist/Salary",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "qa-engineer",
+      "role": "QA Engineer",
+      "section": "A",
+      "yearsExperience": "2–5",
+      "medianMonthlyUSD": 900,
+      "percentile30USD": 650,
+      "percentile70USD": 1400,
+      "medianMonthlyPHP": 55449,
+      "percentile30PHP": 40047,
+      "percentile70PHP": 86254,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Automation QA (Playwright, Selenium, Cypress) commands 25–40% premium over manual QA in the Philippine remote market. Mobile testing (iOS Simulator, Android Emulator) adds additional premium.",
+      "sources": [
+        {
+          "name": "Glassdoor Philippines — QA Engineer Salaries",
+          "url": "https://www.glassdoor.com/Salaries/philippines-qa-engineer-salary-SRCH_IL.0,11_IN204_KO12,23.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed Philippines — QA Engineer Salaries",
+          "url": "https://ph.indeed.com/career/quality-assurance-engineer/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "ai-ml-engineer",
+      "role": "AI / ML Engineer",
+      "section": "A",
+      "yearsExperience": "3–7",
+      "medianMonthlyUSD": 2700,
+      "percentile30USD": 1800,
+      "percentile70USD": 4000,
+      "medianMonthlyPHP": 166347,
+      "percentile30PHP": 110898,
+      "percentile70PHP": 246440,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "SalaryExpert Philippines (accessed May 2026) reports an average AI engineer salary of $39,950/year ($3,329/month) nationally. Second Talent (accessed May 2026) shows mid-level AI engineers charging $25–$55/hour for remote contract work.",
+      "sources": [
+        {
+          "name": "Second Talent — AI Engineer Rate Card Philippines",
+          "url": "https://www.secondtalent.com/developer-rate-card/ai-engineer-philippines/",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "SalaryExpert — AI Engineer Salary Philippines",
+          "url": "https://www.erieri.com/salary/job/artificial-intelligence-engineer/philippines",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor Manila — AI/ML Engineer Salaries",
+          "url": "https://www.glassdoor.com/Salaries/manila-philippines-ai-ml-engineer-salary-SRCH_IL.0,18_IM995_KO19,33.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "mobile-developer",
+      "role": "Mobile Developer (iOS / Android)",
+      "section": "A",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 1600,
+      "percentile30USD": 1100,
+      "percentile70USD": 2200,
+      "medianMonthlyPHP": 98576,
+      "percentile30PHP": 67771,
+      "percentile70PHP": 135542,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Philippine mobile developers are active in the US app development market. Flutter and React Native experience is increasingly equivalent to native Swift/Kotlin in remote posting requirements.",
+      "sources": [
+        {
+          "name": "Glassdoor Manila — Mobile Developer Salaries",
+          "url": "https://www.glassdoor.com/Salaries/manila-philippines-mobile-developer-salary-SRCH_IL.0,18_IM995_KO19,35.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Arc.dev — Remote Software Engineer Salary Philippines",
+          "url": "https://arc.dev/salaries/software-engineers-in-philippines",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "ui-ux-designer",
+      "role": "UI / UX Designer",
+      "section": "B",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 1100,
+      "percentile30USD": 750,
+      "percentile70USD": 1700,
+      "medianMonthlyPHP": 67771,
+      "percentile30PHP": 46208,
+      "percentile70PHP": 104737,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Payscale Philippines (accessed May 2026) reports a local average of ₱593,218/year (approximately ₱49,435/month) for UX designers. International remote rates for Figma-proficient UX designers working on US product teams are typically 50–80% above local market.",
+      "sources": [
+        {
+          "name": "Payscale Philippines — UX Designer Salary",
+          "url": "https://www.payscale.com/research/PH/Job=UX_Designer/Salary",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor Philippines — UX Designer Salaries",
+          "url": "https://www.glassdoor.com/Salaries/philippines-ux-designer-salary-SRCH_IL.0,11_IN204_KO12,23.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "product-manager",
+      "role": "Product Manager",
+      "section": "B",
+      "yearsExperience": "4–8",
+      "medianMonthlyUSD": 1500,
+      "percentile30USD": 900,
+      "percentile70USD": 2200,
+      "medianMonthlyPHP": 92415,
+      "percentile30PHP": 55449,
+      "percentile70PHP": 135542,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Glassdoor Manila (accessed May 2026) shows a median of ₱45,000/month for product managers at all levels across all employer types. International remote rates for senior PMs with documented track records in US markets are substantially higher.",
+      "sources": [
+        {
+          "name": "Glassdoor Manila — Product Manager Salaries",
+          "url": "https://www.glassdoor.com/Salaries/manila-philippines-product-manager-salary-SRCH_IL.0,18_IM995_KO19,34.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Payscale Philippines — Product Manager Salary",
+          "url": "https://www.payscale.com/research/PH/Job=Product_Manager%2C_(Unspecified_Type)/Salary",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "project-manager",
+      "role": "Project Manager",
+      "section": "B",
+      "yearsExperience": "4–8",
+      "medianMonthlyUSD": 1200,
+      "percentile30USD": 750,
+      "percentile70USD": 1800,
+      "medianMonthlyPHP": 73932,
+      "percentile30PHP": 46208,
+      "percentile70PHP": 110898,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "PMP-certified project managers and CSM-certified Scrum Masters command a premium of 20–30% in the Philippine remote market. US-employer remote roles often require Asana, Monday.com, or JIRA proficiency.",
+      "sources": [
+        {
+          "name": "Glassdoor Philippines — Project Manager Salaries",
+          "url": "https://www.glassdoor.com/Salaries/philippines-project-manager-salary-SRCH_IL.0,11_IN204_KO12,27.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed Philippines — Project Manager Salaries",
+          "url": "https://ph.indeed.com/career/project-manager/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "customer-support-specialist",
+      "role": "Customer Support Specialist",
+      "section": "B",
+      "yearsExperience": "1–4",
+      "medianMonthlyUSD": 500,
+      "percentile30USD": 350,
+      "percentile70USD": 750,
+      "medianMonthlyPHP": 30805,
+      "percentile30PHP": 21564,
+      "percentile70PHP": 46208,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "The Philippines has a well-established BPO sector; customer support compensation is influenced heavily by this market segment. US-facing roles with technical support responsibilities (L2/L3) command 40–60% premium above voice support.",
+      "sources": [
+        {
+          "name": "Indeed Philippines — Customer Support Specialist Salaries",
+          "url": "https://ph.indeed.com/career/customer-support-specialist/salaries",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor Philippines — Customer Support Salaries",
+          "url": "https://www.glassdoor.com/Salaries/philippines-customer-support-specialist-salary-SRCH_IL.0,11_IN204_KO12,39.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "medical-billing-specialist",
+      "role": "Medical Billing Specialist",
+      "section": "C",
+      "yearsExperience": "2–6",
+      "medianMonthlyUSD": 650,
+      "percentile30USD": 450,
+      "percentile70USD": 950,
+      "medianMonthlyPHP": 40047,
+      "percentile30PHP": 27725,
+      "percentile70PHP": 58530,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "SalaryExpert Philippines (accessed May 2026) reports a local medical billing and coding specialist average of ₱365,472/year (approximately ₱30,456/month). International remote rates for CPC- or CCS-certified billers serving US healthcare clients are typically 50–80% above local market.",
+      "sources": [
+        {
+          "name": "SalaryExpert — Medical Billing Specialist Salary Philippines",
+          "url": "https://www.salaryexpert.com/salary/job/medical-billing-and-coding-specialist/philippines",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor Manila — Medical Coder Salaries",
+          "url": "https://www.glassdoor.com/Salaries/manila-filipinas-remote-medical-coder-salary-SRCH_IL.0,16_IM995_KO17,37.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "cad-drafter",
+      "role": "CAD Drafter",
+      "section": "C",
+      "yearsExperience": "2–5",
+      "medianMonthlyUSD": 750,
+      "percentile30USD": 500,
+      "percentile70USD": 1100,
+      "medianMonthlyPHP": 46208,
+      "percentile30PHP": 30805,
+      "percentile70PHP": 67771,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Payscale Philippines (accessed May 2026) reports a local average of ₱442,126/year (approximately ₱36,844/month) for CAD drafters. SalaryExpert Philippines shows similar local market data. International remote rates for AutoCAD/Revit specialists serving US AEC firms reflect a premium for English-language documentation and US building code familiarity.",
+      "sources": [
+        {
+          "name": "Payscale Philippines — CAD Drafter Salary",
+          "url": "https://www.payscale.com/research/PH/Job=Computer_Aided_Design_(CAD)_Drafter/Salary",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "SalaryExpert — AutoCAD Drafter Salary Philippines",
+          "url": "https://www.salaryexpert.com/salary/job/autocad-drafter/philippines",
+          "accessed": "May 2026"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "rates": [
+    {
+      "from": "USD",
+      "to": "INR",
+      "rate": 96.28,
+      "date": "2026-05-16",
+      "source": "Exchange-Rates.org USD/INR history",
+      "sourceUrl": "https://www.exchange-rates.org/exchange-rate-history/usd-inr-2026-05-16",
+      "accessed": "May 2026",
+      "notes": "Spot mid-market rate as of May 16, 2026. Applied consistently across all India salary and total-cost calculations."
+    },
+    {
+      "from": "USD",
+      "to": "PHP",
+      "rate": 61.61,
+      "date": "2026-05-17",
+      "source": "PhilNews USD to PHP Exchange Rate",
+      "sourceUrl": "https://philnews.ph/2026/05/11/usd-to-php-exchange-rate-today-monday-may-11-2026/",
+      "accessed": "May 2026",
+      "notes": "Spot mid-market rate as of May 17, 2026. Applied consistently across all Philippines salary and total-cost calculations."
+    }
+  ]
+}

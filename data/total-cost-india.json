@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "country": "India",
+    "currency": "INR",
+    "exchangeRateUSD": 96.28,
+    "exchangeRateDate": "2026-05-16",
+    "lastUpdated": "May 2026",
+    "methodology": "Base salary drawn from salaries-india.json (median monthly USD). Statutory contributions calculated on base salary at rates sourced from EPFO, ESIC, and Payment of Gratuity Act (all accessed May 2026). EPF calculated on basic salary assumed at 40% of gross CTC (common employer practice). ESI does not apply to any role in this dataset as all gross wages exceed the ₹21,000/month statutory threshold. Gratuity accrual modeled at 4.81% of basic salary per Payment of Gratuity Act formula (15/26 × basic per year). Equipment amortized over 36 months. Management overhead is an industry-typical estimate (5–10%) for organizations using managed remote workforce providers; this figure is not a quoted rate from any specific provider."
+  },
+  "statutoryRates": {
+    "EPF": {
+      "employerRate": 0.12,
+      "wageBase": "Basic salary (employer-defined; modeled at 40% of gross CTC)",
+      "effectiveRateOnGross": 0.048,
+      "source": "Employees' Provident Fund Organisation — Contribution Rate",
+      "sourceUrl": "https://www.epfindia.gov.in/site_docs/PDFs/MiscPDFs/ContributionRate.pdf",
+      "accessed": "May 2026"
+    },
+    "ESI": {
+      "employerRate": 0.0325,
+      "wageThreshold": 21000,
+      "wageThresholdCurrency": "INR",
+      "wageThresholdUSD": 218,
+      "applicableToThisDataset": false,
+      "note": "All roles in this dataset report gross wages exceeding the ₹21,000/month ESI threshold at international remote compensation levels. ESI contributions are therefore not included in total employer cost calculations.",
+      "source": "Employees' State Insurance Corporation — Contribution Rates",
+      "sourceUrl": "https://esic.gov.in/contribution",
+      "accessed": "May 2026"
+    },
+    "gratuity": {
+      "accrualRate": 0.0481,
+      "wageBase": "Basic salary (modeled at 40% of gross CTC)",
+      "effectiveRateOnGross": 0.01924,
+      "note": "Gratuity = 15/26 × basic per year × years of service. Monthly reserve modeled at 4.81% of basic (= 1.924% of gross CTC).",
+      "source": "Payment of Gratuity Act 1972 (amended)",
+      "sourceUrl": "https://empxtrack.com/blog/esi-pf-statutory-compliance/",
+      "accessed": "May 2026"
+    },
+    "professionalTax": {
+      "note": "Professional tax is state-levied. Karnataka and Maharashtra (the two largest hubs for India remote workers) impose a maximum of ₹2,400/year (₹200/month). Modeled at ₹200/month for all roles.",
+      "monthlyUSD": 2.08,
+      "source": "Greythr — Decoding PF, ESI and Gratuity Regulations",
+      "sourceUrl": "https://www.greythr.com/blog/decoding-pf-esi-and-gratuity-regulations/",
+      "accessed": "May 2026"
+    }
+  },
+  "additionalCosts": {
+    "equipmentAmortized": {
+      "monthlyUSD": 45,
+      "components": "Laptop (~$700–$850), monitor (~$160), keyboard/mouse (~$60), headset (~$60), webcam/mic (~$60). Amortized over 36 months.",
+      "note": "Sourced from Dell India and Lenovo India pricing, accessed May 2026."
+    },
+    "internetStipend": {
+      "monthlyUSD": 15,
+      "note": "Typical employer reimbursement for broadband internet for remote workers in India."
+    },
+    "managementOverheadEstimate": {
+      "rate": "5–10% of base salary",
+      "rateForCalculation": 0.075,
+      "note": "Industry-typical estimate for organizations that use managed remote workforce providers. This is not a quoted rate from any specific provider. Organizations managing workers directly incur equivalent costs in HR, payroll administration, compliance, and onboarding overhead."
+    },
+    "trainingOnboardingReserve": {
+      "monthlyUSD": 25,
+      "annualizedUSD": 300,
+      "note": "Annual reserve of $300 for onboarding materials, software licenses, and role-specific training. Spread monthly."
+    }
+  },
+  "roles": [
+    {
+      "id": "software-engineer-mid",
+      "role": "Software Engineer, mid-level",
+      "section": "A",
+      "baseSalaryUSD": 1800,
+      "epfEmployerUSD": 86,
+      "gratuityReserveUSD": 35,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 135,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 2143
+    },
+    {
+      "id": "senior-software-engineer",
+      "role": "Senior Software Engineer",
+      "section": "A",
+      "baseSalaryUSD": 2900,
+      "epfEmployerUSD": 139,
+      "gratuityReserveUSD": 56,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 218,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 3400
+    },
+    {
+      "id": "full-stack-developer",
+      "role": "Full-Stack Developer",
+      "section": "A",
+      "baseSalaryUSD": 2000,
+      "epfEmployerUSD": 96,
+      "gratuityReserveUSD": 38,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 150,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 2371
+    },
+    {
+      "id": "devops-engineer",
+      "role": "DevOps Engineer",
+      "section": "A",
+      "baseSalaryUSD": 2400,
+      "epfEmployerUSD": 115,
+      "gratuityReserveUSD": 46,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 180,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 2828
+    },
+    {
+      "id": "data-analyst",
+      "role": "Data Analyst",
+      "section": "A",
+      "baseSalaryUSD": 1400,
+      "epfEmployerUSD": 67,
+      "gratuityReserveUSD": 27,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 105,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 1686
+    },
+    {
+      "id": "data-scientist",
+      "role": "Data Scientist",
+      "section": "A",
+      "baseSalaryUSD": 2100,
+      "epfEmployerUSD": 101,
+      "gratuityReserveUSD": 40,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 158,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 2486
+    },
+    {
+      "id": "qa-engineer",
+      "role": "QA Engineer",
+      "section": "A",
+      "baseSalaryUSD": 1100,
+      "epfEmployerUSD": 53,
+      "gratuityReserveUSD": 21,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 83,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 1344
+    },
+    {
+      "id": "ai-ml-engineer",
+      "role": "AI / ML Engineer",
+      "section": "A",
+      "baseSalaryUSD": 3500,
+      "epfEmployerUSD": 168,
+      "gratuityReserveUSD": 67,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 263,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 4085
+    },
+    {
+      "id": "mobile-developer",
+      "role": "Mobile Developer (iOS / Android)",
+      "section": "A",
+      "baseSalaryUSD": 2100,
+      "epfEmployerUSD": 101,
+      "gratuityReserveUSD": 40,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 158,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 2486
+    },
+    {
+      "id": "ui-ux-designer",
+      "role": "UI / UX Designer",
+      "section": "B",
+      "baseSalaryUSD": 1300,
+      "epfEmployerUSD": 62,
+      "gratuityReserveUSD": 25,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 98,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 1572
+    },
+    {
+      "id": "product-manager",
+      "role": "Product Manager",
+      "section": "B",
+      "baseSalaryUSD": 3000,
+      "epfEmployerUSD": 144,
+      "gratuityReserveUSD": 58,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 225,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 3514
+    },
+    {
+      "id": "project-manager",
+      "role": "Project Manager",
+      "section": "B",
+      "baseSalaryUSD": 2000,
+      "epfEmployerUSD": 96,
+      "gratuityReserveUSD": 38,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 150,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 2371
+    },
+    {
+      "id": "customer-support-specialist",
+      "role": "Customer Support Specialist",
+      "section": "B",
+      "baseSalaryUSD": 700,
+      "epfEmployerUSD": 34,
+      "gratuityReserveUSD": 13,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 53,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 887
+    },
+    {
+      "id": "medical-billing-specialist",
+      "role": "Medical Billing Specialist",
+      "section": "C",
+      "baseSalaryUSD": 800,
+      "epfEmployerUSD": 38,
+      "gratuityReserveUSD": 15,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 60,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 1000
+    },
+    {
+      "id": "cad-drafter",
+      "role": "CAD Drafter",
+      "section": "C",
+      "baseSalaryUSD": 650,
+      "epfEmployerUSD": 31,
+      "gratuityReserveUSD": 13,
+      "professionalTaxUSD": 2,
+      "equipmentUSD": 45,
+      "internetUSD": 15,
+      "managementOverheadUSD": 49,
+      "trainingReserveUSD": 25,
+      "totalMonthlyEmployerCostUSD": 830
+    }
+  ]
+}

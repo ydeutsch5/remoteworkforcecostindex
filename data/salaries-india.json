@@ -1,0 +1,413 @@
+{
+  "metadata": {
+    "country": "India",
+    "currency": "INR",
+    "exchangeRateUSD": 96.28,
+    "exchangeRateDate": "2026-05-16",
+    "lastUpdated": "May 2026",
+    "scope": "Monthly base compensation for remote workers employed by international (primarily US-based) organizations. Figures reflect market rates paid by foreign employers, which typically exceed local Indian market rates by 40–70 percent.",
+    "notes": "INR equivalents calculated at USD/INR 96.28 (May 16, 2026). Ranges represent 30th–70th percentile of reported compensation; outlier observations above the 90th percentile are excluded. Data aggregated from Glassdoor India, Payscale India, Indeed India, and Arc.dev salary surveys, all accessed May 2026."
+  },
+  "sections": {
+    "A": "Software and technical roles",
+    "B": "Operations and design roles",
+    "C": "Specialized roles"
+  },
+  "roles": [
+    {
+      "id": "software-engineer-mid",
+      "role": "Software Engineer, mid-level",
+      "section": "A",
+      "yearsExperience": "3–5",
+      "medianMonthlyUSD": 1800,
+      "percentile30USD": 1200,
+      "percentile70USD": 2400,
+      "medianMonthlyINR": 173304,
+      "percentile30INR": 115536,
+      "percentile70INR": 231072,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Compensation reflects Bangalore, Hyderabad, and Pune markets; Tier-2 city rates typically 15–25% lower. Figures are base salary only; equity and variable components excluded.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Software Engineer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-software-engineer-salary-SRCH_IL.0,5_IN115_KO6,23.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Payscale India — Software Engineer Salary",
+          "url": "https://www.payscale.com/research/IN/Job=Software_Engineer/Salary",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Arc.dev — Remote Software Developer Salary in India 2026",
+          "url": "https://arc.dev/salaries/software-engineers-in-india",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "senior-software-engineer",
+      "role": "Senior Software Engineer",
+      "section": "A",
+      "yearsExperience": "5–8",
+      "medianMonthlyUSD": 2900,
+      "percentile30USD": 2100,
+      "percentile70USD": 3800,
+      "medianMonthlyINR": 279212,
+      "percentile30INR": 202188,
+      "percentile70INR": 365864,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Senior-level compensation shows high variance between product companies (higher) and services firms (lower). Data skewed toward Tier-1 metro respondents.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Senior Software Engineer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-senior-software-engineer-salary-SRCH_IL.0,5_IN115_KO6,31.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Levels.fyi — Software Engineer India",
+          "url": "https://www.levels.fyi/t/software-engineer/locations/india",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "full-stack-developer",
+      "role": "Full-Stack Developer",
+      "section": "A",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 2000,
+      "percentile30USD": 1300,
+      "percentile70USD": 2800,
+      "medianMonthlyINR": 192560,
+      "percentile30INR": 125164,
+      "percentile70INR": 269584,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Full-stack compensation varies significantly by primary stack (React/Node commands premium over PHP/jQuery stacks). Bangalore and Hyderabad command 10–20% premium.",
+      "sources": [
+        {
+          "name": "Payscale India — Full Stack Developer Salary",
+          "url": "https://www.payscale.com/research/IN/Job=Full_Stack_Software_Developer/Salary",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed India — Full Stack Developer Salaries",
+          "url": "https://in.indeed.com/career/full-stack-developer/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "devops-engineer",
+      "role": "DevOps Engineer",
+      "section": "A",
+      "yearsExperience": "3–7",
+      "medianMonthlyUSD": 2400,
+      "percentile30USD": 1700,
+      "percentile70USD": 3200,
+      "medianMonthlyINR": 231072,
+      "percentile30INR": 163676,
+      "percentile70INR": 307696,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Payscale India reports a local average of ₹995,702/year (approximately ₹82,975/month) for all DevOps roles; remote rates paid by international employers are 2–3 times local averages.",
+      "sources": [
+        {
+          "name": "Glassdoor India — DevOps Engineer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-devops-engineer-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Payscale India — DevOps Engineer Salary",
+          "url": "https://www.payscale.com/research/IN/Job=Development_Operations_(DevOps)_Engineer/Salary",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "data-analyst",
+      "role": "Data Analyst",
+      "section": "A",
+      "yearsExperience": "2–5",
+      "medianMonthlyUSD": 1400,
+      "percentile30USD": 900,
+      "percentile70USD": 1900,
+      "medianMonthlyINR": 134792,
+      "percentile30INR": 86652,
+      "percentile70INR": 182932,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Data analyst compensation is highly dependent on domain expertise (finance analytics vs. marketing analytics) and SQL/Python proficiency level.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Data Analyst Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/data-analyst-salary-SRCH_KO0,12.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed India — Data Analyst Salaries",
+          "url": "https://in.indeed.com/career/data-analyst/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "data-scientist",
+      "role": "Data Scientist",
+      "section": "A",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 2100,
+      "percentile30USD": 1500,
+      "percentile70USD": 2800,
+      "medianMonthlyINR": 202188,
+      "percentile30INR": 144420,
+      "percentile70INR": 269584,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Payscale India reports a local average of ₹1,027,885/year (approximately ₹85,657/month); international remote rates reflect a premium for working in foreign-company workflows.",
+      "sources": [
+        {
+          "name": "Payscale India — Data Scientist Salary",
+          "url": "https://www.payscale.com/research/IN/Job=Data_Scientist/Salary",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor India — Data Scientist Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/data-scientist-salary-SRCH_KO0,14.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "qa-engineer",
+      "role": "QA Engineer",
+      "section": "A",
+      "yearsExperience": "2–5",
+      "medianMonthlyUSD": 1100,
+      "percentile30USD": 800,
+      "percentile70USD": 1600,
+      "medianMonthlyINR": 105908,
+      "percentile30INR": 77024,
+      "percentile70INR": 154048,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Automation QA engineers (Selenium, Cypress, Playwright) command a 30–50% premium over manual testers. AI testing specialist roles reported in ₹12–22 LPA range for Indian market.",
+      "sources": [
+        {
+          "name": "Glassdoor India — QA Engineer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-qa-engineer-salary-SRCH_IL.0,5_IN115_KO6,17.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed India — QA Engineer Salaries",
+          "url": "https://in.indeed.com/career/quality-assurance-engineer/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "ai-ml-engineer",
+      "role": "AI / ML Engineer",
+      "section": "A",
+      "yearsExperience": "3–7",
+      "medianMonthlyUSD": 3500,
+      "percentile30USD": 2500,
+      "percentile70USD": 5000,
+      "medianMonthlyINR": 336980,
+      "percentile30INR": 240700,
+      "percentile70INR": 481400,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "AI/ML engineering is the fastest-growing compensation category in the Indian remote market, with demand growing 40% year-over-year against a 15–20% supply growth rate (Glassdoor India, accessed May 2026). Senior roles with LLM/GenAI specialization command the upper range.",
+      "sources": [
+        {
+          "name": "Glassdoor India — AI/ML Engineer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/ai-ml-engineer-salary-SRCH_KO0,14.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Scaler — AI Engineer Salary in India 2026",
+          "url": "https://www.scaler.com/blog/ai-engineer-salary-in-india-job-roles-skills-and-top-companies/",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "mobile-developer",
+      "role": "Mobile Developer (iOS / Android)",
+      "section": "A",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 2100,
+      "percentile30USD": 1400,
+      "percentile70USD": 2900,
+      "medianMonthlyINR": 202188,
+      "percentile30INR": 134792,
+      "percentile70INR": 279212,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Flutter and React Native developers show similar compensation to native iOS/Android developers in the Indian remote market. Cross-platform experience does not carry a premium as of 2026 data.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Mobile Developer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-mobile-developer-salary-SRCH_IL.0,5_IN115_KO6,22.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed India — Mobile Developer Salaries",
+          "url": "https://in.indeed.com/career/mobile-developer/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "ui-ux-designer",
+      "role": "UI / UX Designer",
+      "section": "B",
+      "yearsExperience": "3–6",
+      "medianMonthlyUSD": 1300,
+      "percentile30USD": 800,
+      "percentile70USD": 1900,
+      "medianMonthlyINR": 125164,
+      "percentile30INR": 77024,
+      "percentile70INR": 182932,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Payscale India reports a local average of ₹616,771/year (approximately ₹51,398/month) for UX designers across all experience levels. International remote rates reflect a premium for English-language design work for Western-market products.",
+      "sources": [
+        {
+          "name": "Payscale India — UX Designer Salary",
+          "url": "https://www.payscale.com/research/IN/Job=UX_Designer/Salary",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor India — UI/UX Designer Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/ui-ux-designer-salary-SRCH_KO0,14.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "product-manager",
+      "role": "Product Manager",
+      "section": "B",
+      "yearsExperience": "4–8",
+      "medianMonthlyUSD": 3000,
+      "percentile30USD": 2000,
+      "percentile70USD": 4200,
+      "medianMonthlyINR": 288840,
+      "percentile30INR": 192560,
+      "percentile70INR": 404376,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Product manager compensation in India reflects strong demand from global product companies establishing India hubs. Ranges show high variance between early-stage startup context and mature-product-line context.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Product Manager Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-product-manager-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Payscale India — Product Manager Salary",
+          "url": "https://www.payscale.com/research/IN/Job=Product_Manager%2C_(Unspecified_Type)/Salary",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "project-manager",
+      "role": "Project Manager",
+      "section": "B",
+      "yearsExperience": "4–8",
+      "medianMonthlyUSD": 2000,
+      "percentile30USD": 1400,
+      "percentile70USD": 2800,
+      "medianMonthlyINR": 192560,
+      "percentile30INR": 134792,
+      "percentile70INR": 269584,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "PMP-certified project managers and Scrum Masters command 15–25% premium in the Indian remote market. Agile certification adds measurable value in US-employer contexts.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Project Manager Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-project-manager-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Payscale India — Project Manager Salary",
+          "url": "https://www.payscale.com/research/IN/Job=Project_Manager%2C_IT/Salary",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "customer-support-specialist",
+      "role": "Customer Support Specialist",
+      "section": "B",
+      "yearsExperience": "1–4",
+      "medianMonthlyUSD": 700,
+      "percentile30USD": 450,
+      "percentile70USD": 1000,
+      "medianMonthlyINR": 67396,
+      "percentile30INR": 43326,
+      "percentile70INR": 96280,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Compensation reflects US-facing customer support roles requiring strong English proficiency. Technical support roles (L2/L3) command a premium of 30–60% over voice support.",
+      "sources": [
+        {
+          "name": "Indeed India — Customer Support Specialist Salaries",
+          "url": "https://in.indeed.com/career/customer-support-specialist/salaries",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor India — Customer Support Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-customer-support-specialist-salary-SRCH_IL.0,5_IN115_KO6,33.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "medical-billing-specialist",
+      "role": "Medical Billing Specialist",
+      "section": "C",
+      "yearsExperience": "2–6",
+      "medianMonthlyUSD": 800,
+      "percentile30USD": 550,
+      "percentile70USD": 1100,
+      "medianMonthlyINR": 77024,
+      "percentile30INR": 52954,
+      "percentile70INR": 105908,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Medical billing specialists require US-specific coding knowledge (ICD-10, CPT). Certified coders (CPC, CCS) command the upper portion of the range.",
+      "sources": [
+        {
+          "name": "Glassdoor India — Medical Billing Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-medical-billing-specialist-salary-SRCH_IL.0,5_IN115_KO6,32.htm",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Indeed India — Medical Billing Salaries",
+          "url": "https://in.indeed.com/career/medical-billing-specialist/salaries",
+          "accessed": "May 2026"
+        }
+      ]
+    },
+    {
+      "id": "cad-drafter",
+      "role": "CAD Drafter",
+      "section": "C",
+      "yearsExperience": "2–5",
+      "medianMonthlyUSD": 650,
+      "percentile30USD": 450,
+      "percentile70USD": 950,
+      "medianMonthlyINR": 62582,
+      "percentile30INR": 43326,
+      "percentile70INR": 91466,
+      "sampleSizeNote": "N/A — aggregated across multiple sources",
+      "caveats": "Indeed India reports a local average of ₹18,121/month for CAD drafters across all sectors. International remote rates for Revit/AutoCAD specialists serving US AEC firms are 2.5–4x the local average. BIM-certified drafters command the upper range.",
+      "sources": [
+        {
+          "name": "Indeed India — CAD Drafter Salaries",
+          "url": "https://in.indeed.com/career/cad-drafter/salaries",
+          "accessed": "May 2026"
+        },
+        {
+          "name": "Glassdoor India — CAD Drafter Salaries",
+          "url": "https://www.glassdoor.co.in/Salaries/india-cad-drafter-salary-SRCH_IL.0,5_IN115_KO6,17.htm",
+          "accessed": "May 2026"
+        }
+      ]
+    }
+  ]
+}
