@@ -228,9 +228,9 @@ export default function MethodologyPage() {
             </li>
             <li>
               <strong>Public-data ceiling.</strong> v1 data relies entirely on
-              public sources. Proprietary placement data from F5 Hiring Solutions
-              is planned as a separately labeled section for Q2 2026 and will be
-              clearly distinguished from public-source data.
+              public sources. Proprietary placement data from the editor&apos;s
+              managed workforce company is planned as a separately labeled section
+              for Q2 2026 and will be clearly distinguished from public-source data.
             </li>
           </ul>
 
@@ -240,9 +240,10 @@ export default function MethodologyPage() {
             of F5 Hiring Solutions. This relationship is disclosed on the{" "}
             <a href="/about">About</a> page and in the structured data for this
             publication. The Cost Index operates under independent editorial
-            standards: no F5 pricing appears on these pages, no calls to action
-            reference F5 services, and data collection is not filtered by
-            commercial interest. Factual corrections should be sent to{" "}
+            standards: no commercial pricing appears on these pages, no calls to
+            action reference any provider&apos;s services, and data collection is
+            not filtered by commercial interest. Factual corrections should be
+            sent to{" "}
             <a href="mailto:editor@remoteworkforcecostindex.com">
               editor@remoteworkforcecostindex.com
             </a>
@@ -262,7 +263,7 @@ export default function MethodologyPage() {
               Multi-byline contributors begin.
             </li>
             <li>
-              <strong>Q4 2026.</strong> Role-level deep dives. Newsletter signup
+              <strong>Q4 2026.</strong> Role-level analyses. Newsletter signup
               if editorial cadence supports it.
             </li>
           </ul>

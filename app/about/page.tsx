@@ -74,18 +74,16 @@ export default function AboutPage() {
               F5 Hiring Solutions
             </a>
             , a managed remote workforce company that has placed professionals
-            from India and the Philippines into US-based companies since 2017.
-            F5 Hiring Solutions operates hubs in Pune, Rajkot, and Manila, and
-            has managed engagements across software engineering, operations,
-            design, and specialized roles.
+            from India and the Philippines into US-based companies since 2017,
+            with hubs in Pune, Rajkot, and Manila across software engineering,
+            operations, design, and specialized roles.
           </p>
           <p>
             Deutsch edits the Remote Workforce Cost Index as a separate,
             independent publication. The Cost Index does not sell services,
-            generate leads, or carry pricing for any commercial provider
-            including F5 Hiring Solutions. Data appears on these pages
-            regardless of whether it favors or disfavors any commercial party,
-            including F5.
+            generate leads, or carry pricing for any commercial provider.
+            Data appears on these pages regardless of whether it favors or
+            disfavors any commercial party.
           </p>
           <p>
             Deutsch can be reached at{" "}
@@ -97,14 +95,13 @@ export default function AboutPage() {
 
           <h2>Editorial independence</h2>
           <p>
-            Joel Deutsch is the founder of F5 Hiring Solutions. This
-            relationship is disclosed on this page, on the Methodology page,
-            and in the structured data for this publication. The Cost Index
-            operates under its own editorial standards: no F5 pricing appears
-            on these pages, no calls to action reference F5 services, and data
-            collection is not filtered by commercial interest. The methodology
-            for each data category is documented publicly and applied
-            consistently across all markets covered.
+            The editor&apos;s affiliation with F5 Hiring Solutions is disclosed
+            on this page and in the structured data for this publication. The
+            Cost Index operates under its own editorial standards: no commercial
+            pricing appears on these pages, no calls to action reference any
+            provider&apos;s services, and data collection is not filtered by
+            commercial interest. The methodology for each data category is
+            documented publicly and applied consistently across all markets covered.
           </p>
           <p>
             Factual corrections and source disputes should be directed to{" "}
