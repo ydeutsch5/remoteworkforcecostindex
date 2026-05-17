@@ -1,15 +1,17 @@
 import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: "1px solid #e5dfd3",
+        borderTop: "1px solid #C9A961",
         background: "#f4f0e8",
         marginTop: "4rem",
       }}
     >
-      <div className="site-container" style={{ paddingTop: "2.5rem", paddingBottom: "2rem" }}>
+      <div className="site-container" style={{ paddingTop: "3rem", paddingBottom: "3rem" }}>
+        {/* Three-column grid */}
         <div
           style={{
             display: "grid",
@@ -18,25 +20,43 @@ export default function Footer() {
             marginBottom: "2rem",
           }}
         >
-          {/* Column 1 */}
+          {/* Column 1: Logo + wordmark + description */}
           <div>
-            <p
+            <div
               style={{
-                fontFamily: "var(--font-playfair), Georgia, serif",
-                fontWeight: 700,
-                fontSize: "1rem",
-                color: "#0a2540",
-                marginBottom: "0.5rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "0.625rem",
               }}
             >
-              Remote Workforce Cost Index
-            </p>
-            <p style={{ fontSize: "0.875rem", color: "#6b6354", lineHeight: 1.6, marginBottom: 0 }}>
-              An independent reference publication aggregating public salary and labor cost data for remote workforce planning. Edited by Joel Deutsch.
+              <Logo size={24} />
+              <span
+                style={{
+                  fontFamily: "var(--font-playfair), Georgia, serif",
+                  fontWeight: 700,
+                  fontSize: "1rem",
+                  color: "#0a2540",
+                }}
+              >
+                Remote Workforce Cost Index
+              </span>
+            </div>
+            <p
+              style={{
+                fontSize: "13.5px",
+                color: "rgba(10, 37, 64, 0.75)",
+                lineHeight: 1.6,
+                marginBottom: 0,
+                fontFamily: "var(--font-source-serif), Georgia, serif",
+              }}
+            >
+              An independent reference publication aggregating public salary and
+              labor cost data for remote workforce planning. Edited by Joel Deutsch.
             </p>
           </div>
 
-          {/* Column 2 */}
+          {/* Column 2: Pages */}
           <div>
             <p
               style={{
@@ -61,13 +81,15 @@ export default function Footer() {
                   { href: "/total-cost/philippines", label: "Total Cost — Philippines" },
                   { href: "/about", label: "About" },
                 ].map((link) => (
-                  <li key={link.href} style={{ marginBottom: "0.35rem" }}>
+                  <li key={link.href} style={{ marginBottom: 0 }}>
                     <Link
                       href={link.href}
                       style={{
-                        fontSize: "0.875rem",
+                        fontSize: "14px",
                         color: "#6b6354",
                         textDecoration: "none",
+                        display: "block",
+                        lineHeight: "36px",
                       }}
                     >
                       {link.label}
@@ -78,7 +100,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 3 */}
+          {/* Column 3: Publication details */}
           <div>
             <p
               style={{
@@ -94,10 +116,22 @@ export default function Footer() {
               Publication
             </p>
             <p style={{ fontSize: "0.875rem", color: "#6b6354", marginBottom: "0.35rem" }}>
-              Last full update: May 2026
+              <span
+                style={{
+                  fontFamily: "var(--font-ibm-plex-mono), monospace",
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  display: "block",
+                  color: "rgba(10, 37, 64, 0.55)",
+                  marginBottom: "2px",
+                }}
+              >
+                Last full update
+              </span>
+              May 2026
             </p>
             <p style={{ fontSize: "0.875rem", color: "#6b6354", marginBottom: 0 }}>
-              Contact:{" "}
               <a
                 href="mailto:editor@remoteworkforcecostindex.com"
                 style={{ color: "#6b6354" }}
@@ -108,26 +142,35 @@ export default function Footer() {
           </div>
         </div>
 
-        <div style={{ borderTop: "1px solid #e5dfd3", paddingTop: "1rem" }}>
+        {/* Bottom strip: 1px navy 8% separator + disclaimer */}
+        <div
+          style={{
+            borderTop: "1px solid rgba(10, 37, 64, 0.08)",
+            paddingTop: "1.5rem",
+            marginTop: "0.5rem",
+          }}
+        >
           <p
             style={{
-              fontSize: "0.8125rem",
-              color: "#6b6354",
+              fontSize: "12.5px",
+              color: "rgba(10, 37, 64, 0.65)",
               margin: 0,
               lineHeight: 1.6,
+              fontFamily: "var(--font-source-serif), Georgia, serif",
             }}
           >
             Data sourced from public salary and labor databases. See{" "}
-            <Link href="/methodology" style={{ color: "#6b6354" }}>
+            <Link href="/methodology" style={{ color: "rgba(10, 37, 64, 0.65)" }}>
               methodology
             </Link>{" "}
             for details. Not financial or legal advice.
           </p>
           <p
             style={{
-              fontSize: "0.8125rem",
-              color: "#6b6354",
+              fontSize: "12.5px",
+              color: "rgba(10, 37, 64, 0.65)",
               margin: "0.5rem 0 0",
+              fontFamily: "var(--font-source-serif), Georgia, serif",
             }}
           >
             &copy; Remote Workforce Cost Index 2026

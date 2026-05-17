@@ -118,24 +118,19 @@ export default function HomePage() {
           >
             Browse the data
           </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-              gap: "1rem",
-            }}
-          >
+          <div className="card-grid">
             {dataCards.map((card) => (
               <Link key={card.href} href={card.href} className="data-card">
                 <span className="data-card-label">{card.label}</span>
                 <span className="data-card-title">{card.title}</span>
                 <p
                   style={{
-                    fontSize: "0.875rem",
-                    color: "#6b6354",
+                    fontSize: "14.5px",
+                    color: "rgba(10, 37, 64, 0.75)",
                     marginTop: "0.4rem",
                     marginBottom: 0,
                     fontFamily: "var(--font-source-serif), Georgia, serif",
+                    lineHeight: 1.55,
                   }}
                 >
                   {card.description}

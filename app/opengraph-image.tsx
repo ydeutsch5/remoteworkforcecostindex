@@ -32,6 +32,54 @@ export default function Image() {
           }}
         />
 
+        {/* Masthead row: logo mark + wordmark */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            marginBottom: "32px",
+          }}
+        >
+          {/* Logo mark (64px) */}
+          <svg
+            width={64}
+            height={64}
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="0.75" y="0.75" width="30.5" height="30.5" stroke="#0A2540" strokeWidth="1.5" />
+            <rect x="3.5" y="16" width="6" height="12" fill="#0A2540" />
+            <rect x="13" y="12" width="6" height="16" fill="#0A2540" />
+            <rect x="22.5" y="8" width="6" height="20" fill="#0A2540" />
+          </svg>
+
+          <h1
+            style={{
+              fontSize: "36px",
+              fontWeight: 700,
+              color: "#0A2540",
+              fontFamily: "serif",
+              letterSpacing: "-0.01em",
+              margin: 0,
+              lineHeight: 1.2,
+            }}
+          >
+            Remote Workforce Cost Index
+          </h1>
+        </div>
+
+        {/* 2px gold rule beneath masthead */}
+        <div
+          style={{
+            width: "100%",
+            height: "2px",
+            backgroundColor: "#C9A961",
+            marginBottom: "32px",
+          }}
+        />
+
         <p
           style={{
             fontSize: "16px",
@@ -40,36 +88,11 @@ export default function Image() {
             fontFamily: "serif",
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            marginBottom: "24px",
             margin: "0 0 24px",
           }}
         >
           Public salary and labor cost data
         </p>
-
-        <h1
-          style={{
-            fontSize: "64px",
-            fontWeight: 700,
-            color: "#0A2540",
-            fontFamily: "serif",
-            lineHeight: 1.15,
-            margin: "0 0 32px",
-            maxWidth: "900px",
-          }}
-        >
-          Remote Workforce Cost Index
-        </h1>
-
-        {/* Gold divider */}
-        <div
-          style={{
-            width: "80px",
-            height: "3px",
-            backgroundColor: "#C9A961",
-            marginBottom: "28px",
-          }}
-        />
 
         <p
           style={{

@@ -1,98 +1,68 @@
 import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Header() {
   return (
-    <header className="bg-cream border-b border-rule sticky top-0 z-50 shadow-subtle">
-      <div className="site-container py-4">
-        <div className="flex flex-col gap-2">
+    <header
+      style={{
+        backgroundColor: "#FAF6EF",
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+      }}
+    >
+      <div className="site-container">
+        <div className="masthead-inner">
+          {/* Brand: logo + stacked text */}
           <Link
             href="/"
-            className="no-underline hover:no-underline"
+            className="masthead-brand"
             aria-label="Remote Workforce Cost Index — home"
           >
-            <span
-              className="text-navy"
-              style={{
-                fontFamily: "var(--font-playfair), Georgia, serif",
-                fontSize: "22px",
-                fontWeight: 700,
-                letterSpacing: "-0.01em",
-                textDecoration: "none",
-              }}
-            >
-              Remote Workforce Cost Index
-            </span>
+            <Logo size={32} />
+            <div className="masthead-text-block">
+              <span className="masthead-wordmark">Remote Workforce Cost Index</span>
+              <span className="masthead-identifier">VOL. I · MMXXVI · EDITED BY JOEL DEUTSCH</span>
+            </div>
           </Link>
 
-          <nav aria-label="Primary navigation">
-            <ul
-              style={{
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1.25rem",
-                alignItems: "center",
-                fontSize: "0.875rem",
-                fontFamily: "var(--font-source-serif), Georgia, serif",
-              }}
-            >
+          {/* Primary navigation */}
+          <nav aria-label="Primary navigation" className="masthead-nav">
+            <ul className="masthead-nav-list">
               <li>
-                <Link href="/methodology" style={{ textDecoration: "none", color: "#6b6354" }}>
+                <Link href="/methodology" className="masthead-nav-link">
                   Methodology
                 </Link>
               </li>
 
-              <li>
-                <details style={{ display: "inline" }}>
-                  <summary
-                    style={{
-                      cursor: "pointer",
-                      color: "#6b6354",
-                      listStyle: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.25rem",
-                    }}
-                  >
-                    Salaries
-                    <span aria-hidden="true" style={{ fontSize: "0.65rem" }}>▾</span>
+              <li style={{ position: "relative" }}>
+                <details className="nav-dropdown">
+                  <summary className="masthead-nav-link masthead-nav-summary">
+                    Salaries{" "}
+                    <span aria-hidden="true" className="nav-caret">▾</span>
                   </summary>
-                  <div
-                    style={{
-                      position: "absolute",
-                      background: "#faf6ef",
-                      border: "1px solid #e5dfd3",
-                      padding: "0.5rem 0",
-                      marginTop: "0.25rem",
-                      boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
-                      zIndex: 100,
-                      minWidth: "140px",
-                    }}
-                  >
-                    <Link
-                      href="/salaries/india"
-                      style={{
-                        display: "block",
-                        padding: "0.4rem 0.875rem",
-                        color: "#0a2540",
-                        textDecoration: "none",
-                        fontSize: "0.85rem",
-                      }}
-                    >
+                  <div className="nav-dropdown-menu">
+                    <Link href="/salaries/india" className="nav-dropdown-item">
                       India
                     </Link>
-                    <Link
-                      href="/salaries/philippines"
-                      style={{
-                        display: "block",
-                        padding: "0.4rem 0.875rem",
-                        color: "#0a2540",
-                        textDecoration: "none",
-                        fontSize: "0.85rem",
-                      }}
-                    >
+                    <Link href="/salaries/philippines" className="nav-dropdown-item">
+                      Philippines
+                    </Link>
+                  </div>
+                </details>
+              </li>
+
+              <li style={{ position: "relative" }}>
+                <details className="nav-dropdown">
+                  <summary className="masthead-nav-link masthead-nav-summary">
+                    Total Cost{" "}
+                    <span aria-hidden="true" className="nav-caret">▾</span>
+                  </summary>
+                  <div className="nav-dropdown-menu">
+                    <Link href="/total-cost/india" className="nav-dropdown-item">
+                      India
+                    </Link>
+                    <Link href="/total-cost/philippines" className="nav-dropdown-item">
                       Philippines
                     </Link>
                   </div>
@@ -100,62 +70,7 @@ export default function Header() {
               </li>
 
               <li>
-                <details style={{ display: "inline" }}>
-                  <summary
-                    style={{
-                      cursor: "pointer",
-                      color: "#6b6354",
-                      listStyle: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.25rem",
-                    }}
-                  >
-                    Total Cost
-                    <span aria-hidden="true" style={{ fontSize: "0.65rem" }}>▾</span>
-                  </summary>
-                  <div
-                    style={{
-                      position: "absolute",
-                      background: "#faf6ef",
-                      border: "1px solid #e5dfd3",
-                      padding: "0.5rem 0",
-                      marginTop: "0.25rem",
-                      boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
-                      zIndex: 100,
-                      minWidth: "140px",
-                    }}
-                  >
-                    <Link
-                      href="/total-cost/india"
-                      style={{
-                        display: "block",
-                        padding: "0.4rem 0.875rem",
-                        color: "#0a2540",
-                        textDecoration: "none",
-                        fontSize: "0.85rem",
-                      }}
-                    >
-                      India
-                    </Link>
-                    <Link
-                      href="/total-cost/philippines"
-                      style={{
-                        display: "block",
-                        padding: "0.4rem 0.875rem",
-                        color: "#0a2540",
-                        textDecoration: "none",
-                        fontSize: "0.85rem",
-                      }}
-                    >
-                      Philippines
-                    </Link>
-                  </div>
-                </details>
-              </li>
-
-              <li>
-                <Link href="/about" style={{ textDecoration: "none", color: "#6b6354" }}>
+                <Link href="/about" className="masthead-nav-link">
                   About
                 </Link>
               </li>
@@ -163,7 +78,11 @@ export default function Header() {
           </nav>
         </div>
       </div>
-      <div style={{ height: "1px", background: "#c9a961", width: "100%" }} />
+
+      {/* Double rule: 2px gold + 12px gap + 1px navy 15% */}
+      <div style={{ height: "2px", backgroundColor: "#C9A961" }} />
+      <div style={{ height: "12px", backgroundColor: "#FAF6EF" }} />
+      <div style={{ height: "1px", backgroundColor: "rgba(10, 37, 64, 0.15)" }} />
     </header>
   );
 }

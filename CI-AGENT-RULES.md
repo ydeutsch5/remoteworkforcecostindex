@@ -17,22 +17,25 @@ Single source of truth for the Remote Workforce Cost Index site (remoteworkforce
 
 ## Visual identity
 
-- **Logo:** Typography wordmark only. Playfair Display serif. No icon, no mark.
+- **Logo:** Custom SVG mark + wordmark masthead. The mark is a 32px navy square containing three ascending vertical bars (suggesting a data publication / index). The wordmark uses Playfair Display.
+- **Masthead:** Logo + wordmark + small-caps publication identifier line ("VOL. I · MMXXVI · EDITED BY JOEL DEUTSCH") in IBM Plex Mono beneath the wordmark.
 - **Colors:**
   - Navy `#0A2540` — primary text and headers
   - Cream `#FAF6EF` — page background
-  - Gold `#C9A961` — accent only (rule lines, data emphasis, callout borders)
+  - Gold `#C9A961` — accent only (rule lines, data emphasis, callout borders, top-card-rule)
+  - Warm gray `#6B6354` — captions, footnotes, muted body
 - **Typography:**
   - Headings: Playfair Display (Google Fonts)
   - Body: Source Serif Pro
-  - Numbers and tables: IBM Plex Mono
+  - Numbers, tables, masthead identifier, last-updated stamps: IBM Plex Mono
 - **Restraint rules:**
   - No gradients
   - No shadows larger than `0 1px 2px rgba(0,0,0,0.05)`
   - No border-radius larger than `4px`
   - No emoji
-  - No icons except for: external link arrow, expand/collapse caret
-  - Single-column reading layout, max-width 720px for prose, 1100px for tables
+  - Iconography limited to: the logo mark, external-link arrow, expand/collapse caret, table sort indicators
+- **Paper texture:** A 3% opacity SVG noise overlay applied to body background. Gives a subtle printed-page feel without distraction.
+- **Single-column reading layout:** max-width 720px for prose, 1100px for tables
 
 ---
 
