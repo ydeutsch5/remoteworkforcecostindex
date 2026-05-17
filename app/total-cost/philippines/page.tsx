@@ -6,19 +6,16 @@ import costData from "@/data/total-cost-philippines.json";
 export const metadata: Metadata = {
   title: "Fully loaded employer cost for remote workers in the Philippines, 2026",
   description:
-    "Base salary plus SSS, PhilHealth, Pag-IBIG, 13th month pay, equipment, and management overhead. Monthly employer cost for 15 roles, Philippines, 2026.",
+    "Two scenarios: local employer base and US employer remote base, both with full Philippines statutory costs (SSS, PhilHealth, Pag-IBIG, 13th month), equipment, and overhead. Monthly employer cost for 15 roles.",
   openGraph: {
     title: "Philippines Remote Worker Total Employer Cost 2026 | Remote Workforce Cost Index",
     description:
-      "Fully loaded monthly employer cost for 15 remote roles in the Philippines, including SSS, PhilHealth, Pag-IBIG, and mandatory 13th month.",
+      "Dual-scenario fully loaded monthly employer cost for 15 remote roles in the Philippines, including SSS, PhilHealth, Pag-IBIG, and mandatory 13th month.",
     url: "https://remoteworkforcecostindex.com/total-cost/philippines",
   },
 };
 
-type CostRole = {
-  id: string;
-  role: string;
-  section: string;
+type Scenario = {
   baseSalaryUSD: number;
   sssEmployerUSD: number;
   philhealthEmployerUSD: number;
@@ -29,6 +26,14 @@ type CostRole = {
   managementOverheadUSD: number;
   trainingReserveUSD: number;
   totalMonthlyEmployerCostUSD: number;
+};
+
+type CostRole = {
+  id: string;
+  role: string;
+  section: string;
+  local_scenario: Scenario;
+  us_remote_scenario: Scenario;
 };
 
 const roles: CostRole[] = costData.roles as CostRole[];
@@ -42,7 +47,7 @@ function getSectionRoles(section: string) {
   return roles.filter((r) => r.section === section);
 }
 
-function CostTable({ section }: { section: string }) {
+function UsRemoteDetailTable({ section }: { section: string }) {
   const sectionRoles = getSectionRoles(section);
 
   return (
@@ -50,8 +55,9 @@ function CostTable({ section }: { section: string }) {
       <div className="table-scroll">
         <table>
           <caption>
-            Section {section} — {sectionLabels[section]}, monthly employer cost
-            in USD, Philippines, 2026. All figures are monthly.
+            Section {section} — {sectionLabels[section]}, US employer remote
+            scenario, monthly employer cost in USD, Philippines, 2026. Base
+            salary from Arc.dev / BLS OES May 2024 offshore-discount estimate.
           </caption>
           <thead>
             <tr>
@@ -69,39 +75,39 @@ function CostTable({ section }: { section: string }) {
             </tr>
           </thead>
           <tbody>
-            {sectionRoles.map((role) => (
-              <tr key={role.id}>
-                <td>{role.role}</td>
-                <td className="num">{formatUSD(role.baseSalaryUSD)}</td>
-                <td className="num">{formatUSD(role.sssEmployerUSD)}</td>
-                <td className="num">{formatUSD(role.philhealthEmployerUSD)}</td>
-                <td className="num">{formatUSD(role.pagibigEmployerUSD)}</td>
-                <td className="num">{formatUSD(role.thirteenthMonthUSD)}</td>
-                <td className="num">{formatUSD(role.equipmentUSD)}</td>
-                <td className="num">{formatUSD(role.internetUSD)}</td>
-                <td className="num">{formatUSD(role.managementOverheadUSD)}</td>
-                <td className="num">{formatUSD(role.trainingReserveUSD)}</td>
-                <td className="num" style={{ fontWeight: 700 }}>
-                  {formatUSD(role.totalMonthlyEmployerCostUSD)}
-                </td>
-              </tr>
-            ))}
+            {sectionRoles.map((role) => {
+              const s = role.us_remote_scenario;
+              return (
+                <tr key={role.id}>
+                  <td>{role.role}</td>
+                  <td className="num">{formatUSD(s.baseSalaryUSD)}</td>
+                  <td className="num">{formatUSD(s.sssEmployerUSD)}</td>
+                  <td className="num">{formatUSD(s.philhealthEmployerUSD)}</td>
+                  <td className="num">{formatUSD(s.pagibigEmployerUSD)}</td>
+                  <td className="num">{formatUSD(s.thirteenthMonthUSD)}</td>
+                  <td className="num">{formatUSD(s.equipmentUSD)}</td>
+                  <td className="num">{formatUSD(s.internetUSD)}</td>
+                  <td className="num">{formatUSD(s.managementOverheadUSD)}</td>
+                  <td className="num">{formatUSD(s.trainingReserveUSD)}</td>
+                  <td className="num" style={{ fontWeight: 700 }}>
+                    {formatUSD(s.totalMonthlyEmployerCostUSD)}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <p className="table-footnotes" style={{ marginTop: "0.5rem" }}>
-        SSS employer contribution: 10% of monthly salary credit, capped at MSC
-        of ₱35,000/month ($568). PhilHealth employer: 2.5% of monthly salary,
-        capped at salary base ₱100,000/month ($1,623). Pag-IBIG employer: 2%
-        of monthly salary, capped at ₱10,000/month ($162); cap binds for all
-        roles.
+        SSS employer contribution: 10% of MSC, capped at $57/month. PhilHealth
+        employer: 2.5% of monthly salary, capped at $41/month (salary base ≤
+        $1,623). Pag-IBIG: capped at $3/month for all roles.
         <br />
-        † 13th month pay is a mandatory annual benefit (Presidential Decree
-        851). Modeled as 8.33% of monthly base salary (1/12 of annual
-        equivalent).
+        † 13th month pay: 8.33% of monthly base (mandatory under Presidential
+        Decree 851).
         <br />
-        ‡ Management overhead is an industry-typical estimate (7.5% of base
-        salary). Not a quoted rate from any specific provider.
+        ‡ Management overhead: 7.5% of base salary. Not a quoted rate from any
+        specific provider.
       </p>
     </div>
   );
@@ -111,7 +117,7 @@ export default function PhilippinesTotalCostPage() {
   const articleSchema = generateArticleSchema({
     title: "Fully loaded employer cost for remote workers in the Philippines, 2026",
     description:
-      "Base salary plus SSS, PhilHealth, Pag-IBIG, mandatory 13th month pay, equipment, internet, and management overhead. Monthly employer cost for 15 roles.",
+      "Two scenarios — local employer base and US employer remote base — both with full Philippines statutory costs (SSS, PhilHealth, Pag-IBIG, 13th month), equipment, and overhead. Monthly employer cost for 15 roles.",
     datePublished: "2026-05-17",
     dateModified: "2026-05-17",
     url: "/total-cost/philippines",
@@ -120,7 +126,7 @@ export default function PhilippinesTotalCostPage() {
   const datasetSchema = generateDatasetSchema({
     name: "Philippines Remote Workforce Total Employer Cost 2026",
     description:
-      "Fully loaded monthly employer cost for 15 remote-friendly roles in the Philippines, including SSS, PhilHealth, Pag-IBIG, 13th month, equipment, and overhead.",
+      "Dual-scenario fully loaded monthly employer cost for 15 remote-friendly roles in the Philippines. Local employer scenario and US employer remote scenario, both with statutory contributions, 13th month, equipment, and overhead.",
     datePublished: "2026-05-17",
     dateModified: "2026-05-17",
     sources: [
@@ -135,6 +141,14 @@ export default function PhilippinesTotalCostPage() {
       {
         name: "Pag-IBIG Contribution Table 2026",
         url: "https://requirementph.com/pag-ibig-contribution-table-2026/",
+      },
+      {
+        name: "Arc.dev — Remote Salaries in Philippines",
+        url: "https://arc.dev/salaries",
+      },
+      {
+        name: "U.S. Bureau of Labor Statistics — OEWS May 2024",
+        url: "https://www.bls.gov/oes/current/oes_nat.htm",
       },
     ],
     url: "/total-cost/philippines",
@@ -168,39 +182,40 @@ export default function PhilippinesTotalCostPage() {
               marginBottom: "0.75rem",
             }}
           >
-            Base salary plus statutory contributions, 13th month pay,
-            equipment, facilities, and overhead, expressed as monthly employer
-            cost in USD.
+            Two scenarios: local employer base and US employer remote base, both
+            with full Philippines statutory costs, 13th month, equipment, and
+            overhead. Monthly cost in USD.
           </p>
           <span className="last-updated">Last updated: May 2026</span>
         </div>
 
         <div className="prose-rwci">
           <p>
-            &quot;Fully loaded employer cost&quot; is the total monthly expenditure an
-            organization incurs to employ a remote worker in the Philippines,
-            beyond the base salary paid to the employee. It includes mandatory
-            statutory contributions (SSS, PhilHealth, Pag-IBIG), the
-            13th-month pay benefit required by Philippine law, equipment
-            provision, internet reimbursement, and an estimate of management
-            overhead. It does not include income taxes paid by the employee,
-            optional benefits such as private health insurance, or equity
-            compensation.
+            This page reports fully loaded monthly employer cost for remote
+            workers in the Philippines under two base salary scenarios. The{" "}
+            <strong>local scenario</strong> applies Philippines statutory
+            contributions to the local employer median salary from{" "}
+            <a href="/salaries/philippines">Salaries — Philippines</a>{" "}
+            (Glassdoor/Payscale/Indeed sources). The{" "}
+            <strong>US remote scenario</strong> applies the same statutory
+            contributions to the US employer remote median salary from the same
+            page (Arc.dev or BLS OES May 2024 offshore-discount estimate). The
+            statutory contribution rates, 13th month benefit, equipment costs,
+            and overhead estimate are identical in both scenarios — only the base
+            salary differs.
           </p>
-
           <p>
-            Base salary figures are drawn from{" "}
-            <a href="/salaries/philippines">Salaries — Philippines</a> (median
-            monthly USD for each role). For full methodology, see{" "}
-            <a href="/methodology">Methodology</a>.
+            &quot;Fully loaded cost&quot; includes SSS, PhilHealth, Pag-IBIG, mandatory
+            13th month pay, equipment amortization, internet stipend, management
+            overhead, and a training reserve. It does not include income taxes
+            paid by the employee, optional benefits, or equity. For full
+            methodology, see <a href="/methodology">Methodology</a>.
           </p>
 
           <h2>Statutory contributions — Philippines</h2>
-
           <p>
-            The following statutory contributions apply to employers with
-            employees in the Philippines. Rates reflect 2026 government
-            schedules.
+            Rates reflect 2026 government schedules and apply equally to both
+            scenarios.
           </p>
 
           <div className="table-scroll" style={{ marginBottom: "2rem" }}>
@@ -228,8 +243,9 @@ export default function PhilippinesTotalCostPage() {
                   <td className="num">10%</td>
                   <td>MSC up to ₱35,000/month</td>
                   <td>
-                    Employee contributes 5%. MSC cap: ₱35,000 ($568). Employer
-                    also remits ₱10/month Employees&apos; Compensation (EC).
+                    Employee contributes 5%. MSC cap: ₱35,000 ($568). Max
+                    employer contribution: $57/month. Cap binds for all roles
+                    in the US remote scenario.
                   </td>
                 </tr>
                 <tr>
@@ -240,11 +256,11 @@ export default function PhilippinesTotalCostPage() {
                     </sup>
                   </td>
                   <td className="num">2.5%</td>
-                  <td>Monthly salary up to ₱100,000</td>
+                  <td>Monthly salary up to ₱100,000 ($1,623)</td>
                   <td>
-                    Total premium 5%, split evenly. Minimum monthly
-                    contribution: ₱500. Maximum: ₱5,000 (at ₱100,000 salary
-                    base).
+                    Total premium 5%, split evenly. Capped at $41/month for
+                    salaries above $1,623. Uncapped for salaries below;
+                    effective rate is 2.5% of base.
                   </td>
                 </tr>
                 <tr>
@@ -255,10 +271,10 @@ export default function PhilippinesTotalCostPage() {
                     </sup>
                   </td>
                   <td className="num">2%</td>
-                  <td>Monthly salary up to ₱10,000</td>
+                  <td>Monthly salary up to ₱10,000 ($162)</td>
                   <td>
-                    Maximum mandatory employer contribution: ₱200/month ($3.25).
-                    Cap binds for all roles in this dataset.
+                    Maximum mandatory employer contribution: $3/month. Cap
+                    binds for all roles in this dataset.
                   </td>
                 </tr>
                 <tr>
@@ -285,8 +301,7 @@ export default function PhilippinesTotalCostPage() {
             style={{ paddingLeft: "1.25rem", marginBottom: "2rem" }}
           >
             <li id="fn-tc-ph-1">
-              Social Security System — SSS Contribution Table 2026. Taxumo.com
-              — BIR Tax Table and Contribution for 2026.
+              Social Security System — SSS Contribution Table 2026.
               taxumo.com/blog/bir-tax-table-2026/. Accessed May 2026.
             </li>
             <li id="fn-tc-ph-2">
@@ -295,57 +310,121 @@ export default function PhilippinesTotalCostPage() {
               Accessed May 2026.
             </li>
             <li id="fn-tc-ph-3">
-              Pag-IBIG Fund — Contribution Table 2026. requirementph.com/pag-ibig-contribution-table-2026/.
-              Accessed May 2026.
+              Pag-IBIG Fund — Contribution Table 2026.
+              requirementph.com/pag-ibig-contribution-table-2026/. Accessed May
+              2026.
             </li>
             <li id="fn-tc-ph-4">
               Department of Labor and Employment Philippines — 13th Month Pay
-              Guidelines (Presidential Decree 851). taxumo.com/blog/bir-tax-table-2026/.
-              Accessed May 2026.
+              Guidelines (Presidential Decree 851).
+              taxumo.com/blog/bir-tax-table-2026/. Accessed May 2026.
             </li>
           </ol>
 
-          <div className="callout">
-            <p>
-              <strong>13th month pay note:</strong> The 13th month benefit is
-              mandatory under Philippine law and adds approximately 8.33 percent
-              to annualized base salary cost. At a base salary of $1,600/month,
-              the monthly 13th-month reserve is $133. This figure is included in
-              the &quot;Total Monthly&quot; column in all tables below.
-            </p>
-          </div>
-
-          <div className="callout">
-            <p>
-              <strong>Methodology note:</strong> Equipment is amortized over 36
-              months at Lenovo Philippines and Dell Philippines pricing (accessed
-              May 2026). Management overhead (7.5%) is an industry-typical
-              estimate and should be understood as approximate. Internet stipend
-              ($15/month) reflects typical employer reimbursement for broadband.
-            </p>
-          </div>
-
-          <h2>Monthly employer cost by role</h2>
+          <h2>Scenario comparison — all roles</h2>
           <p>
-            The tables below apply all statutory and additional cost components
-            to the median base salary for each role. &quot;Total Monthly&quot; represents
-            the full monthly expenditure per worker at median pay, before
-            optional benefits.
+            The table below compares total monthly employer cost under both
+            scenarios for all 15 roles. Base salary source for each scenario is
+            documented in{" "}
+            <a href="/salaries/philippines">Salaries — Philippines</a>.
           </p>
         </div>
 
-        <div className="tables-rwci" style={{ marginTop: "1.5rem" }}>
-          <CostTable section="A" />
-          <CostTable section="B" />
-          <CostTable section="C" />
+        <div className="tables-rwci" style={{ marginTop: "1rem" }}>
+          <div style={{ marginBottom: "2.5rem" }}>
+            <div className="table-scroll">
+              <table>
+                <caption>
+                  Philippines — scenario comparison, all 15 roles, monthly
+                  employer cost in USD, 2026. Local scenario uses
+                  Glassdoor/Payscale/Indeed median. US remote scenario uses
+                  Arc.dev / BLS OES May 2024 offshore-discount median.
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th className="num">Local Base</th>
+                    <th className="num">Local Total</th>
+                    <th
+                      className="num"
+                      style={{ borderLeft: "2px solid #C9A961" }}
+                    >
+                      US Remote Base
+                    </th>
+                    <th className="num">US Remote Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {roles.map((role) => (
+                    <tr key={role.id}>
+                      <td>{role.role}</td>
+                      <td className="num">
+                        {formatUSD(role.local_scenario.baseSalaryUSD)}
+                      </td>
+                      <td className="num">
+                        {formatUSD(
+                          role.local_scenario.totalMonthlyEmployerCostUSD
+                        )}
+                      </td>
+                      <td
+                        className="num"
+                        style={{ borderLeft: "2px solid #C9A961" }}
+                      >
+                        {formatUSD(role.us_remote_scenario.baseSalaryUSD)}
+                      </td>
+                      <td className="num" style={{ fontWeight: 700 }}>
+                        {formatUSD(
+                          role.us_remote_scenario.totalMonthlyEmployerCostUSD
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="prose-rwci" style={{ marginBottom: "1rem" }}>
+            <h2>US employer remote scenario — detailed breakdown</h2>
+            <p>
+              The tables below show the full cost breakdown for the US employer
+              remote scenario by section. The local scenario follows the same
+              formula applied to the local base salary; detailed local
+              breakdowns are derivable from the salary and statutory rate data
+              on this page.
+            </p>
+
+            <div className="callout">
+              <p>
+                <strong>13th month note:</strong> The 13th month benefit is
+                mandatory and adds approximately 8.33 percent to annualized base
+                salary cost. PhilHealth is uncapped for base salaries below
+                $1,623/month; for Customer Support ($950), Medical Billing
+                ($1,100), and CAD Drafter ($1,550) in the US remote scenario,
+                PhilHealth is calculated at the actual rate (2.5% of base) rather
+                than the $41 cap.
+              </p>
+            </div>
+          </div>
+
+          <UsRemoteDetailTable section="A" />
+          <UsRemoteDetailTable section="B" />
+          <UsRemoteDetailTable section="C" />
         </div>
 
         <div className="prose-rwci" style={{ paddingBottom: "3rem" }}>
-          <p style={{ fontSize: "0.875rem", color: "#6b6354", fontStyle: "italic" }}>
-            Edited by Joel Deutsch, Remote Workforce Cost Index. Statutory
-            rates sourced from SSS, PhilHealth, and Pag-IBIG (May 2026).
-            Salary data from Glassdoor Philippines, Payscale Philippines,
-            Indeed Philippines, and Arc.dev (May 2026). See{" "}
+          <p
+            style={{
+              fontSize: "0.875rem",
+              color: "#6b6354",
+              fontStyle: "italic",
+            }}
+          >
+            Edited by Joel Deutsch, Remote Workforce Cost Index. Statutory rates
+            sourced from SSS, PhilHealth, and Pag-IBIG (May 2026). US employer
+            remote salary data from Arc.dev and BLS OES (May 2026). Local salary
+            data from Glassdoor Philippines, Payscale Philippines, and Indeed
+            Philippines (May 2026). See{" "}
             <a href="/methodology">Methodology</a> for full source list and
             limitations.
           </p>

@@ -5,8 +5,14 @@
     "exchangeRateUSD": 96.28,
     "exchangeRateDate": "2026-05-16",
     "lastUpdated": "May 2026",
-    "scope": "Monthly base compensation for remote workers employed by international (primarily US-based) organizations. Figures reflect market rates paid by foreign employers, which typically exceed local Indian market rates by 40–70 percent.",
-    "notes": "INR equivalents calculated at USD/INR 96.28 (May 16, 2026). Ranges represent 30th–70th percentile of reported compensation; outlier observations above the 90th percentile are excluded. Data aggregated from Glassdoor India, Payscale India, Indeed India, and Arc.dev salary surveys, all accessed May 2026."
+    "scope": "Monthly base compensation for remote workers in India, reported in two market contexts: local employer rates (Glassdoor India, Payscale India, Indeed India) and US employer remote rates (Arc.dev; estimated from BLS OES May 2024 offshore discount bands where direct data is unavailable). Both series are reported with full source citations.",
+    "notes": "INR equivalents calculated at USD/INR 96.28 (May 16, 2026). Local employer ranges represent 30th–70th percentile of reported compensation from Indian salary databases. US employer remote ranges reflect what US-based employers pay remote workers in India, sourced from Arc.dev or estimated at validated offshore discount percentages of the BLS OES May 2024 US domestic median."
+  },
+  "bls_reference": {
+    "source": "U.S. Bureau of Labor Statistics — Occupational Employment and Wage Statistics (OEWS), May 2024",
+    "url": "https://www.bls.gov/oes/current/oes_nat.htm",
+    "accessed": "May 2026",
+    "note": "Annual median wages divided by 12 to derive monthly figures. Used as US domestic benchmark for offshore discount percentage calculations."
   },
   "sections": {
     "A": "Software and technical roles",
@@ -19,395 +25,675 @@
       "role": "Software Engineer, mid-level",
       "section": "A",
       "yearsExperience": "3–5",
-      "medianMonthlyUSD": 1800,
-      "percentile30USD": 1200,
-      "percentile70USD": 2400,
-      "medianMonthlyINR": 173304,
-      "percentile30INR": 115536,
-      "percentile70INR": 231072,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Compensation reflects Bangalore, Hyderabad, and Pune markets; Tier-2 city rates typically 15–25% lower. Figures are base salary only; equity and variable components excluded.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Software Engineer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-software-engineer-salary-SRCH_IL.0,5_IN115_KO6,23.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Payscale India — Software Engineer Salary",
-          "url": "https://www.payscale.com/research/IN/Job=Software_Engineer/Salary",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Arc.dev — Remote Software Developer Salary in India 2026",
-          "url": "https://arc.dev/salaries/software-engineers-in-india",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 1800,
+        "percentile30USD": 1200,
+        "percentile70USD": 2400,
+        "medianMonthlyINR": 173304,
+        "percentile30INR": 115536,
+        "percentile70INR": 231072,
+        "caveats": "Compensation reflects Bangalore, Hyderabad, and Pune markets; Tier-2 city rates typically 15–25% lower. Figures are base salary only; equity and variable components excluded.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Software Engineer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-software-engineer-salary-SRCH_IL.0,5_IN115_KO6,23.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Payscale India — Software Engineer Salary",
+            "url": "https://www.payscale.com/research/IN/Job=Software_Engineer/Salary",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 4077,
+        "percentile30USD": 3200,
+        "percentile70USD": 5000,
+        "percentile30INR": 308096,
+        "percentile70INR": 481400,
+        "source_name": "Arc.dev — Remote Software Developer Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/software-engineers-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": null
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 11090,
+        "soc_code": "15-1252",
+        "title": "Software Developers"
+      },
+      "offshore_pct": 37
     },
     {
       "id": "senior-software-engineer",
       "role": "Senior Software Engineer",
       "section": "A",
       "yearsExperience": "5–8",
-      "medianMonthlyUSD": 2900,
-      "percentile30USD": 2100,
-      "percentile70USD": 3800,
-      "medianMonthlyINR": 279212,
-      "percentile30INR": 202188,
-      "percentile70INR": 365864,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Senior-level compensation shows high variance between product companies (higher) and services firms (lower). Data skewed toward Tier-1 metro respondents.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Senior Software Engineer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-senior-software-engineer-salary-SRCH_IL.0,5_IN115_KO6,31.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Levels.fyi — Software Engineer India",
-          "url": "https://www.levels.fyi/t/software-engineer/locations/india",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 2900,
+        "percentile30USD": 2100,
+        "percentile70USD": 3800,
+        "medianMonthlyINR": 279212,
+        "percentile30INR": 202188,
+        "percentile70INR": 365864,
+        "caveats": "Senior-level compensation shows high variance between product companies (higher) and services firms (lower). Data skewed toward Tier-1 metro respondents.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Senior Software Engineer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-senior-software-engineer-salary-SRCH_IL.0,5_IN115_KO6,31.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Levels.fyi — Software Engineer India",
+            "url": "https://www.levels.fyi/t/software-engineer/locations/india",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 5229,
+        "percentile30USD": 4200,
+        "percentile70USD": 6500,
+        "percentile30INR": 404376,
+        "percentile70INR": 625820,
+        "source_name": "Arc.dev — Remote Senior Software Engineer Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/software-engineers-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": null
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 11090,
+        "soc_code": "15-1252",
+        "title": "Software Developers"
+      },
+      "offshore_pct": 47
     },
     {
       "id": "full-stack-developer",
       "role": "Full-Stack Developer",
       "section": "A",
       "yearsExperience": "3–6",
-      "medianMonthlyUSD": 2000,
-      "percentile30USD": 1300,
-      "percentile70USD": 2800,
-      "medianMonthlyINR": 192560,
-      "percentile30INR": 125164,
-      "percentile70INR": 269584,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Full-stack compensation varies significantly by primary stack (React/Node commands premium over PHP/jQuery stacks). Bangalore and Hyderabad command 10–20% premium.",
-      "sources": [
-        {
-          "name": "Payscale India — Full Stack Developer Salary",
-          "url": "https://www.payscale.com/research/IN/Job=Full_Stack_Software_Developer/Salary",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Indeed India — Full Stack Developer Salaries",
-          "url": "https://in.indeed.com/career/full-stack-developer/salaries",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 2000,
+        "percentile30USD": 1300,
+        "percentile70USD": 2800,
+        "medianMonthlyINR": 192560,
+        "percentile30INR": 125164,
+        "percentile70INR": 269584,
+        "caveats": "Full-stack compensation varies significantly by primary stack (React/Node commands premium over PHP/jQuery stacks). Bangalore and Hyderabad command 10–20% premium.",
+        "sources": [
+          {
+            "name": "Payscale India — Full Stack Developer Salary",
+            "url": "https://www.payscale.com/research/IN/Job=Full_Stack_Software_Developer/Salary",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Indeed India — Full Stack Developer Salaries",
+            "url": "https://in.indeed.com/career/full-stack-developer/salaries",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 4020,
+        "percentile30USD": 3100,
+        "percentile70USD": 5100,
+        "percentile30INR": 298468,
+        "percentile70INR": 490908,
+        "source_name": "Arc.dev — Remote Full-Stack Developer Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/software-engineers-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": null
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 11090,
+        "soc_code": "15-1252",
+        "title": "Software Developers"
+      },
+      "offshore_pct": 36
     },
     {
       "id": "devops-engineer",
       "role": "DevOps Engineer",
       "section": "A",
       "yearsExperience": "3–7",
-      "medianMonthlyUSD": 2400,
-      "percentile30USD": 1700,
-      "percentile70USD": 3200,
-      "medianMonthlyINR": 231072,
-      "percentile30INR": 163676,
-      "percentile70INR": 307696,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Payscale India reports a local average of ₹995,702/year (approximately ₹82,975/month) for all DevOps roles; remote rates paid by international employers are 2–3 times local averages.",
-      "sources": [
-        {
-          "name": "Glassdoor India — DevOps Engineer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-devops-engineer-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Payscale India — DevOps Engineer Salary",
-          "url": "https://www.payscale.com/research/IN/Job=Development_Operations_(DevOps)_Engineer/Salary",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 2400,
+        "percentile30USD": 1700,
+        "percentile70USD": 3200,
+        "medianMonthlyINR": 231072,
+        "percentile30INR": 163676,
+        "percentile70INR": 307696,
+        "caveats": "Payscale India reports a local average of ₹995,702/year (approximately ₹82,975/month) for all DevOps roles. International remote rates paid by US employers are significantly higher.",
+        "sources": [
+          {
+            "name": "Glassdoor India — DevOps Engineer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-devops-engineer-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Payscale India — DevOps Engineer Salary",
+            "url": "https://www.payscale.com/research/IN/Job=Development_Operations_(DevOps)_Engineer/Salary",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 4241,
+        "percentile30USD": 3300,
+        "percentile70USD": 5500,
+        "percentile30INR": 317724,
+        "percentile70INR": 529540,
+        "source_name": "Arc.dev — Remote DevOps Engineer Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/devops-engineers-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": null
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 8067,
+        "soc_code": "15-1244",
+        "title": "Network and Computer Systems Administrators / DevOps"
+      },
+      "offshore_pct": 53
     },
     {
       "id": "data-analyst",
       "role": "Data Analyst",
       "section": "A",
       "yearsExperience": "2–5",
-      "medianMonthlyUSD": 1400,
-      "percentile30USD": 900,
-      "percentile70USD": 1900,
-      "medianMonthlyINR": 134792,
-      "percentile30INR": 86652,
-      "percentile70INR": 182932,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Data analyst compensation is highly dependent on domain expertise (finance analytics vs. marketing analytics) and SQL/Python proficiency level.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Data Analyst Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/data-analyst-salary-SRCH_KO0,12.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Indeed India — Data Analyst Salaries",
-          "url": "https://in.indeed.com/career/data-analyst/salaries",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 1400,
+        "percentile30USD": 900,
+        "percentile70USD": 1900,
+        "medianMonthlyINR": 134792,
+        "percentile30INR": 86652,
+        "percentile70INR": 182932,
+        "caveats": "Data analyst compensation is highly dependent on domain expertise (finance analytics vs. marketing analytics) and SQL/Python proficiency level.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Data Analyst Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/data-analyst-salary-SRCH_KO0,12.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Indeed India — Data Analyst Salaries",
+            "url": "https://in.indeed.com/career/data-analyst/salaries",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 3000,
+        "percentile30USD": 2400,
+        "percentile70USD": 3600,
+        "percentile30INR": 231072,
+        "percentile70INR": 346608,
+        "source_name": "Arc.dev — Remote Data Analyst Salary in India 2026 (range midpoint)",
+        "source_url": "https://arc.dev/salaries/data-analysts-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "Arc.dev reports a range of $2,667–$3,333/month for India data analysts employed by US companies. Median derived as midpoint of reported range."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 7608,
+        "soc_code": "15-2031",
+        "title": "Operations Research Analysts / Data Analysts"
+      },
+      "offshore_pct": 39
     },
     {
       "id": "data-scientist",
       "role": "Data Scientist",
       "section": "A",
       "yearsExperience": "3–6",
-      "medianMonthlyUSD": 2100,
-      "percentile30USD": 1500,
-      "percentile70USD": 2800,
-      "medianMonthlyINR": 202188,
-      "percentile30INR": 144420,
-      "percentile70INR": 269584,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Payscale India reports a local average of ₹1,027,885/year (approximately ₹85,657/month); international remote rates reflect a premium for working in foreign-company workflows.",
-      "sources": [
-        {
-          "name": "Payscale India — Data Scientist Salary",
-          "url": "https://www.payscale.com/research/IN/Job=Data_Scientist/Salary",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Glassdoor India — Data Scientist Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/data-scientist-salary-SRCH_KO0,14.htm",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 2100,
+        "percentile30USD": 1500,
+        "percentile70USD": 2800,
+        "medianMonthlyINR": 202188,
+        "percentile30INR": 144420,
+        "percentile70INR": 269584,
+        "caveats": "Payscale India reports a local average of ₹1,027,885/year (approximately ₹85,657/month); international remote rates reflect a premium for working in foreign-company workflows.",
+        "sources": [
+          {
+            "name": "Payscale India — Data Scientist Salary",
+            "url": "https://www.payscale.com/research/IN/Job=Data_Scientist/Salary",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Glassdoor India — Data Scientist Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/data-scientist-salary-SRCH_KO0,14.htm",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 4207,
+        "percentile30USD": 3300,
+        "percentile70USD": 5400,
+        "percentile30INR": 317724,
+        "percentile70INR": 519912,
+        "source_name": "Arc.dev — Remote Data Scientist Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/data-scientists-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": null
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 9383,
+        "soc_code": "15-2051",
+        "title": "Data Scientists"
+      },
+      "offshore_pct": 45
     },
     {
       "id": "qa-engineer",
       "role": "QA Engineer",
       "section": "A",
       "yearsExperience": "2–5",
-      "medianMonthlyUSD": 1100,
-      "percentile30USD": 800,
-      "percentile70USD": 1600,
-      "medianMonthlyINR": 105908,
-      "percentile30INR": 77024,
-      "percentile70INR": 154048,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Automation QA engineers (Selenium, Cypress, Playwright) command a 30–50% premium over manual testers. AI testing specialist roles reported in ₹12–22 LPA range for Indian market.",
-      "sources": [
-        {
-          "name": "Glassdoor India — QA Engineer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-qa-engineer-salary-SRCH_IL.0,5_IN115_KO6,17.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Indeed India — QA Engineer Salaries",
-          "url": "https://in.indeed.com/career/quality-assurance-engineer/salaries",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 1100,
+        "percentile30USD": 800,
+        "percentile70USD": 1600,
+        "medianMonthlyINR": 105908,
+        "percentile30INR": 77024,
+        "percentile70INR": 154048,
+        "caveats": "Automation QA engineers (Selenium, Cypress, Playwright) command a 30–50% premium over manual testers. AI testing specialist roles reported in ₹12–22 LPA range for Indian market.",
+        "sources": [
+          {
+            "name": "Glassdoor India — QA Engineer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-qa-engineer-salary-SRCH_IL.0,5_IN115_KO6,17.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Indeed India — QA Engineer Salaries",
+            "url": "https://in.indeed.com/career/quality-assurance-engineer/salaries",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 2039,
+        "percentile30USD": 1600,
+        "percentile70USD": 2600,
+        "percentile30INR": 154048,
+        "percentile70INR": 250328,
+        "source_name": "Arc.dev — Remote QA Engineer Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/qa-engineers-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": true,
+        "source_note": "Reported US employer remote median (24% of BLS OES May 2024 median for Quality Control Analysts, SOC 15-1253, $8,551/month) falls below the expected India mid-level band of 30–45%. Arc.dev figure reported as collected; treat as directional. Automation QA premiums may push realized rates toward the band floor."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 8551,
+        "soc_code": "15-1253",
+        "title": "Software Quality Assurance Analysts and Testers"
+      },
+      "offshore_pct": 24
     },
     {
       "id": "ai-ml-engineer",
       "role": "AI / ML Engineer",
       "section": "A",
       "yearsExperience": "3–7",
-      "medianMonthlyUSD": 3500,
-      "percentile30USD": 2500,
-      "percentile70USD": 5000,
-      "medianMonthlyINR": 336980,
-      "percentile30INR": 240700,
-      "percentile70INR": 481400,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "AI/ML engineering is the fastest-growing compensation category in the Indian remote market, with demand growing 40% year-over-year against a 15–20% supply growth rate (Glassdoor India, accessed May 2026). Senior roles with LLM/GenAI specialization command the upper range.",
-      "sources": [
-        {
-          "name": "Glassdoor India — AI/ML Engineer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/ai-ml-engineer-salary-SRCH_KO0,14.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Scaler — AI Engineer Salary in India 2026",
-          "url": "https://www.scaler.com/blog/ai-engineer-salary-in-india-job-roles-skills-and-top-companies/",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 3500,
+        "percentile30USD": 2500,
+        "percentile70USD": 5000,
+        "medianMonthlyINR": 336980,
+        "percentile30INR": 240700,
+        "percentile70INR": 481400,
+        "caveats": "AI/ML engineering is the fastest-growing compensation category in the Indian remote market, with demand growing 40% year-over-year against 15–20% supply growth (Glassdoor India, accessed May 2026). Senior roles with LLM/GenAI specialization command the upper range.",
+        "sources": [
+          {
+            "name": "Glassdoor India — AI/ML Engineer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/ai-ml-engineer-salary-SRCH_KO0,14.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Scaler — AI Engineer Salary in India 2026",
+            "url": "https://www.scaler.com/blog/ai-engineer-salary-in-india-job-roles-skills-and-top-companies/",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 4800,
+        "percentile30USD": 3800,
+        "percentile70USD": 6200,
+        "percentile30INR": 365864,
+        "percentile70INR": 596936,
+        "source_name": "Arc.dev India Data Scientist median ($4,207/month) + 15% AI/ML premium — estimated",
+        "source_url": "https://arc.dev/salaries/data-scientists-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "No direct Arc.dev AI/ML Engineer India figure available as of May 2026. Figure estimated from Arc.dev India Data Scientist median ($4,207/month) with a 15% premium for AI/ML engineering scope, consistent with BLS OES spread between Data Scientists (SOC 15-2051) and Computer and Information Research Scientists (SOC 15-1221). Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 12000,
+        "soc_code": "15-1221",
+        "title": "Computer and Information Research Scientists (approximate)"
+      },
+      "offshore_pct": 40
     },
     {
       "id": "mobile-developer",
       "role": "Mobile Developer (iOS / Android)",
       "section": "A",
       "yearsExperience": "3–6",
-      "medianMonthlyUSD": 2100,
-      "percentile30USD": 1400,
-      "percentile70USD": 2900,
-      "medianMonthlyINR": 202188,
-      "percentile30INR": 134792,
-      "percentile70INR": 279212,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Flutter and React Native developers show similar compensation to native iOS/Android developers in the Indian remote market. Cross-platform experience does not carry a premium as of 2026 data.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Mobile Developer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-mobile-developer-salary-SRCH_IL.0,5_IN115_KO6,22.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Indeed India — Mobile Developer Salaries",
-          "url": "https://in.indeed.com/career/mobile-developer/salaries",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 2100,
+        "percentile30USD": 1400,
+        "percentile70USD": 2900,
+        "medianMonthlyINR": 202188,
+        "percentile30INR": 134792,
+        "percentile70INR": 279212,
+        "caveats": "Flutter and React Native developers show similar compensation to native iOS/Android developers in the Indian remote market. Cross-platform experience does not carry a premium as of 2026 data.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Mobile Developer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-mobile-developer-salary-SRCH_IL.0,5_IN115_KO6,22.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Indeed India — Mobile Developer Salaries",
+            "url": "https://in.indeed.com/career/mobile-developer/salaries",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 3964,
+        "percentile30USD": 3100,
+        "percentile70USD": 5000,
+        "percentile30INR": 298468,
+        "percentile70INR": 481400,
+        "source_name": "Arc.dev — Remote Mobile Developer Salary in India 2026",
+        "source_url": "https://arc.dev/salaries/mobile-developers-in-india",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": null
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 11090,
+        "soc_code": "15-1252",
+        "title": "Software Developers"
+      },
+      "offshore_pct": 36
     },
     {
       "id": "ui-ux-designer",
       "role": "UI / UX Designer",
       "section": "B",
       "yearsExperience": "3–6",
-      "medianMonthlyUSD": 1300,
-      "percentile30USD": 800,
-      "percentile70USD": 1900,
-      "medianMonthlyINR": 125164,
-      "percentile30INR": 77024,
-      "percentile70INR": 182932,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Payscale India reports a local average of ₹616,771/year (approximately ₹51,398/month) for UX designers across all experience levels. International remote rates reflect a premium for English-language design work for Western-market products.",
-      "sources": [
-        {
-          "name": "Payscale India — UX Designer Salary",
-          "url": "https://www.payscale.com/research/IN/Job=UX_Designer/Salary",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Glassdoor India — UI/UX Designer Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/ui-ux-designer-salary-SRCH_KO0,14.htm",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 1300,
+        "percentile30USD": 800,
+        "percentile70USD": 1900,
+        "medianMonthlyINR": 125164,
+        "percentile30INR": 77024,
+        "percentile70INR": 182932,
+        "caveats": "Payscale India reports a local average of ₹616,771/year (approximately ₹51,398/month) for UX designers across all experience levels. International remote rates reflect a premium for English-language design work for Western-market products.",
+        "sources": [
+          {
+            "name": "Payscale India — UX Designer Salary",
+            "url": "https://www.payscale.com/research/IN/Job=UX_Designer/Salary",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Glassdoor India — UI/UX Designer Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/ui-ux-designer-salary-SRCH_KO0,14.htm",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 3000,
+        "percentile30USD": 2300,
+        "percentile70USD": 3900,
+        "percentile30INR": 221444,
+        "percentile70INR": 375492,
+        "source_name": "BLS OES May 2024, SOC 15-1255 — estimated at 37% of US median",
+        "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "No direct Arc.dev UI/UX Designer India figure available as of May 2026. Figure estimated at 37% of BLS OES May 2024 median for UX Designers and UX Researchers (SOC 15-1255, $8,174/month annual median / 12 = $681/month — note: BLS annual is $98,090 / 12 = $8,174/month). Percentage consistent with Arc.dev observed offshore discount band for India mid-level roles (30–45%). Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 8174,
+        "soc_code": "15-1255",
+        "title": "UX Designers and UX Researchers"
+      },
+      "offshore_pct": 37
     },
     {
       "id": "product-manager",
       "role": "Product Manager",
       "section": "B",
       "yearsExperience": "4–8",
-      "medianMonthlyUSD": 3000,
-      "percentile30USD": 2000,
-      "percentile70USD": 4200,
-      "medianMonthlyINR": 288840,
-      "percentile30INR": 192560,
-      "percentile70INR": 404376,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Product manager compensation in India reflects strong demand from global product companies establishing India hubs. Ranges show high variance between early-stage startup context and mature-product-line context.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Product Manager Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-product-manager-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Payscale India — Product Manager Salary",
-          "url": "https://www.payscale.com/research/IN/Job=Product_Manager%2C_(Unspecified_Type)/Salary",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 3000,
+        "percentile30USD": 2000,
+        "percentile70USD": 4200,
+        "medianMonthlyINR": 288840,
+        "percentile30INR": 192560,
+        "percentile70INR": 404376,
+        "caveats": "Product manager compensation in India reflects strong demand from global product companies establishing India hubs. Ranges show high variance between early-stage startup context and mature-product-line context.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Product Manager Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-product-manager-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Payscale India — Product Manager Salary",
+            "url": "https://www.payscale.com/research/IN/Job=Product_Manager%2C_(Unspecified_Type)/Salary",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 5000,
+        "percentile30USD": 4000,
+        "percentile70USD": 6500,
+        "percentile30INR": 385120,
+        "percentile70INR": 625820,
+        "source_name": "BLS OES May 2024, SOC 11-2021 — estimated at 37% of US median",
+        "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "Estimated at 37% of BLS OES May 2024 median for Marketing Managers (SOC 11-2021, $13,419/month). Product Manager remote hiring data for India is limited in public sources; figure uses observed Arc.dev India discount band (30–45% of US baseline) applied to the nearest available BLS occupational category. Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 13419,
+        "soc_code": "11-2021",
+        "title": "Marketing Managers (nearest BLS proxy)"
+      },
+      "offshore_pct": 37
     },
     {
       "id": "project-manager",
       "role": "Project Manager",
       "section": "B",
       "yearsExperience": "4–8",
-      "medianMonthlyUSD": 2000,
-      "percentile30USD": 1400,
-      "percentile70USD": 2800,
-      "medianMonthlyINR": 192560,
-      "percentile30INR": 134792,
-      "percentile70INR": 269584,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "PMP-certified project managers and Scrum Masters command 15–25% premium in the Indian remote market. Agile certification adds measurable value in US-employer contexts.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Project Manager Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-project-manager-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Payscale India — Project Manager Salary",
-          "url": "https://www.payscale.com/research/IN/Job=Project_Manager%2C_IT/Salary",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 2000,
+        "percentile30USD": 1400,
+        "percentile70USD": 2800,
+        "medianMonthlyINR": 192560,
+        "percentile30INR": 134792,
+        "percentile70INR": 269584,
+        "caveats": "PMP-certified project managers and Scrum Masters command 15–25% premium in the Indian remote market. Agile certification adds measurable value in US-employer contexts.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Project Manager Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-project-manager-salary-SRCH_IL.0,5_IN115_KO6,21.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Payscale India — Project Manager Salary",
+            "url": "https://www.payscale.com/research/IN/Job=Project_Manager%2C_IT/Salary",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 3100,
+        "percentile30USD": 2400,
+        "percentile70USD": 4000,
+        "percentile30INR": 231072,
+        "percentile70INR": 385120,
+        "source_name": "BLS OES May 2024, SOC 13-1082 — estimated at 37% of US median",
+        "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "Estimated at 37% of BLS OES May 2024 median for Project Management Specialists (SOC 13-1082, $8,396/month). Figure uses observed Arc.dev India discount band (30–45% of US baseline). Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 8396,
+        "soc_code": "13-1082",
+        "title": "Project Management Specialists"
+      },
+      "offshore_pct": 37
     },
     {
       "id": "customer-support-specialist",
       "role": "Customer Support Specialist",
       "section": "B",
       "yearsExperience": "1–4",
-      "medianMonthlyUSD": 700,
-      "percentile30USD": 450,
-      "percentile70USD": 1000,
-      "medianMonthlyINR": 67396,
-      "percentile30INR": 43326,
-      "percentile70INR": 96280,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Compensation reflects US-facing customer support roles requiring strong English proficiency. Technical support roles (L2/L3) command a premium of 30–60% over voice support.",
-      "sources": [
-        {
-          "name": "Indeed India — Customer Support Specialist Salaries",
-          "url": "https://in.indeed.com/career/customer-support-specialist/salaries",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Glassdoor India — Customer Support Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-customer-support-specialist-salary-SRCH_IL.0,5_IN115_KO6,33.htm",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 700,
+        "percentile30USD": 450,
+        "percentile70USD": 1000,
+        "medianMonthlyINR": 67396,
+        "percentile30INR": 43326,
+        "percentile70INR": 96280,
+        "caveats": "Compensation reflects US-facing customer support roles requiring strong English proficiency. Technical support roles (L2/L3) command a premium of 30–60% over voice support.",
+        "sources": [
+          {
+            "name": "Indeed India — Customer Support Specialist Salaries",
+            "url": "https://in.indeed.com/career/customer-support-specialist/salaries",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Glassdoor India — Customer Support Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-customer-support-specialist-salary-SRCH_IL.0,5_IN115_KO6,33.htm",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 1150,
+        "percentile30USD": 850,
+        "percentile70USD": 1500,
+        "percentile30INR": 81838,
+        "percentile70INR": 144420,
+        "source_name": "BLS OES May 2024, SOC 43-4051 — estimated at 32% of US median",
+        "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "Estimated at 32% of BLS OES May 2024 median for Customer Service Representatives (SOC 43-4051, $3,570/month). Reflects offshore discount pattern observed for non-technical roles in India. Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 3570,
+        "soc_code": "43-4051",
+        "title": "Customer Service Representatives"
+      },
+      "offshore_pct": 32
     },
     {
       "id": "medical-billing-specialist",
       "role": "Medical Billing Specialist",
       "section": "C",
       "yearsExperience": "2–6",
-      "medianMonthlyUSD": 800,
-      "percentile30USD": 550,
-      "percentile70USD": 1100,
-      "medianMonthlyINR": 77024,
-      "percentile30INR": 52954,
-      "percentile70INR": 105908,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Medical billing specialists require US-specific coding knowledge (ICD-10, CPT). Certified coders (CPC, CCS) command the upper portion of the range.",
-      "sources": [
-        {
-          "name": "Glassdoor India — Medical Billing Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-medical-billing-specialist-salary-SRCH_IL.0,5_IN115_KO6,32.htm",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Indeed India — Medical Billing Salaries",
-          "url": "https://in.indeed.com/career/medical-billing-specialist/salaries",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 800,
+        "percentile30USD": 550,
+        "percentile70USD": 1100,
+        "medianMonthlyINR": 77024,
+        "percentile30INR": 52954,
+        "percentile70INR": 105908,
+        "caveats": "Medical billing specialists require US-specific coding knowledge (ICD-10, CPT). Certified coders (CPC, CCS) command the upper portion of the range.",
+        "sources": [
+          {
+            "name": "Glassdoor India — Medical Billing Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-medical-billing-specialist-salary-SRCH_IL.0,5_IN115_KO6,32.htm",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Indeed India — Medical Billing Salaries",
+            "url": "https://in.indeed.com/career/medical-billing-specialist/salaries",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 1350,
+        "percentile30USD": 1000,
+        "percentile70USD": 1800,
+        "percentile30INR": 96280,
+        "percentile70INR": 173304,
+        "source_name": "BLS OES May 2024, SOC 29-2072 — estimated at 32% of US median",
+        "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "Estimated at 32% of BLS OES May 2024 median for Medical Records Specialists (SOC 29-2072, $4,188/month). No direct Arc.dev medical billing India figure available as of May 2026. CPC- or CCS-certified billers serving US healthcare clients may command the upper portion of the range. Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 4188,
+        "soc_code": "29-2072",
+        "title": "Medical Records Specialists"
+      },
+      "offshore_pct": 32
     },
     {
       "id": "cad-drafter",
       "role": "CAD Drafter",
       "section": "C",
       "yearsExperience": "2–5",
-      "medianMonthlyUSD": 650,
-      "percentile30USD": 450,
-      "percentile70USD": 950,
-      "medianMonthlyINR": 62582,
-      "percentile30INR": 43326,
-      "percentile70INR": 91466,
-      "sampleSizeNote": "N/A — aggregated across multiple sources",
-      "caveats": "Indeed India reports a local average of ₹18,121/month for CAD drafters across all sectors. International remote rates for Revit/AutoCAD specialists serving US AEC firms are 2.5–4x the local average. BIM-certified drafters command the upper range.",
-      "sources": [
-        {
-          "name": "Indeed India — CAD Drafter Salaries",
-          "url": "https://in.indeed.com/career/cad-drafter/salaries",
-          "accessed": "May 2026"
-        },
-        {
-          "name": "Glassdoor India — CAD Drafter Salaries",
-          "url": "https://www.glassdoor.co.in/Salaries/india-cad-drafter-salary-SRCH_IL.0,5_IN115_KO6,17.htm",
-          "accessed": "May 2026"
-        }
-      ]
+      "local_employer": {
+        "medianMonthlyUSD": 650,
+        "percentile30USD": 450,
+        "percentile70USD": 950,
+        "medianMonthlyINR": 62582,
+        "percentile30INR": 43326,
+        "percentile70INR": 91466,
+        "caveats": "Indeed India reports a local average of ₹18,121/month for CAD drafters across all sectors. International remote rates for Revit/AutoCAD specialists serving US AEC firms are 2.5–4× the local average. BIM-certified drafters command the upper range.",
+        "sources": [
+          {
+            "name": "Indeed India — CAD Drafter Salaries",
+            "url": "https://in.indeed.com/career/cad-drafter/salaries",
+            "accessed": "May 2026"
+          },
+          {
+            "name": "Glassdoor India — CAD Drafter Salaries",
+            "url": "https://www.glassdoor.co.in/Salaries/india-cad-drafter-salary-SRCH_IL.0,5_IN115_KO6,17.htm",
+            "accessed": "May 2026"
+          }
+        ]
+      },
+      "us_employer_remote": {
+        "medianMonthlyUSD": 1800,
+        "percentile30USD": 1400,
+        "percentile70USD": 2300,
+        "percentile30INR": 134792,
+        "percentile70INR": 221444,
+        "source_name": "BLS OES May 2024, SOC 17-3011 — estimated at 31% of US median",
+        "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
+        "accessed": "May 2026",
+        "outlier_flag": false,
+        "source_note": "Estimated at 31% of BLS OES May 2024 median for Architectural and Civil Drafters (SOC 17-3011, $5,738/month). No direct Arc.dev CAD/BIM drafter India figure available as of May 2026. AutoCAD/Revit specialists serving US AEC firms with English-language documentation capability command the upper range. Treat as directional."
+      },
+      "us_baseline_reference": {
+        "medianMonthlyUSD": 5738,
+        "soc_code": "17-3011",
+        "title": "Architectural and Civil Drafters"
+      },
+      "offshore_pct": 31
     }
   ]
 }

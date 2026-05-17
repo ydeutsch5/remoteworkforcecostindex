@@ -6,19 +6,16 @@ import costData from "@/data/total-cost-india.json";
 export const metadata: Metadata = {
   title: "Fully loaded employer cost for remote workers in India, 2026",
   description:
-    "Base salary plus statutory contributions (EPF, gratuity), equipment, internet, and management overhead. Monthly employer cost for 15 roles, India, 2026.",
+    "Two scenarios: local employer base and US employer remote base, both with full India statutory costs (EPF, gratuity), equipment, and overhead. Monthly employer cost for 15 roles, India, 2026.",
   openGraph: {
     title: "India Remote Worker Total Employer Cost 2026 | Remote Workforce Cost Index",
     description:
-      "Fully loaded monthly employer cost for 15 remote roles in India, including EPF, gratuity reserve, equipment, and overhead.",
+      "Dual-scenario fully loaded monthly employer cost for 15 remote roles in India, including EPF, gratuity reserve, equipment, and overhead.",
     url: "https://remoteworkforcecostindex.com/total-cost/india",
   },
 };
 
-type CostRole = {
-  id: string;
-  role: string;
-  section: string;
+type Scenario = {
   baseSalaryUSD: number;
   epfEmployerUSD: number;
   gratuityReserveUSD: number;
@@ -28,6 +25,14 @@ type CostRole = {
   managementOverheadUSD: number;
   trainingReserveUSD: number;
   totalMonthlyEmployerCostUSD: number;
+};
+
+type CostRole = {
+  id: string;
+  role: string;
+  section: string;
+  local_scenario: Scenario;
+  us_remote_scenario: Scenario;
 };
 
 const roles: CostRole[] = costData.roles as CostRole[];
@@ -41,7 +46,7 @@ function getSectionRoles(section: string) {
   return roles.filter((r) => r.section === section);
 }
 
-function CostTable({ section }: { section: string }) {
+function UsRemoteDetailTable({ section }: { section: string }) {
   const sectionRoles = getSectionRoles(section);
 
   return (
@@ -49,8 +54,9 @@ function CostTable({ section }: { section: string }) {
       <div className="table-scroll">
         <table>
           <caption>
-            Section {section} — {sectionLabels[section]}, monthly employer cost
-            in USD, India, 2026. All figures are monthly.
+            Section {section} — {sectionLabels[section]}, US employer remote
+            scenario, monthly employer cost in USD, India, 2026. Base salary
+            from Arc.dev / BLS OES May 2024 offshore-discount estimate.
           </caption>
           <thead>
             <tr>
@@ -66,34 +72,35 @@ function CostTable({ section }: { section: string }) {
             </tr>
           </thead>
           <tbody>
-            {sectionRoles.map((role) => (
-              <tr key={role.id}>
-                <td>{role.role}</td>
-                <td className="num">{formatUSD(role.baseSalaryUSD)}</td>
-                <td className="num">{formatUSD(role.epfEmployerUSD)}</td>
-                <td className="num">{formatUSD(role.gratuityReserveUSD)}</td>
-                <td className="num">{formatUSD(role.equipmentUSD)}</td>
-                <td className="num">{formatUSD(role.internetUSD)}</td>
-                <td className="num">{formatUSD(role.managementOverheadUSD)}</td>
-                <td className="num">{formatUSD(role.trainingReserveUSD)}</td>
-                <td className="num" style={{ fontWeight: 700 }}>
-                  {formatUSD(role.totalMonthlyEmployerCostUSD)}
-                </td>
-              </tr>
-            ))}
+            {sectionRoles.map((role) => {
+              const s = role.us_remote_scenario;
+              return (
+                <tr key={role.id}>
+                  <td>{role.role}</td>
+                  <td className="num">{formatUSD(s.baseSalaryUSD)}</td>
+                  <td className="num">{formatUSD(s.epfEmployerUSD)}</td>
+                  <td className="num">{formatUSD(s.gratuityReserveUSD)}</td>
+                  <td className="num">{formatUSD(s.equipmentUSD)}</td>
+                  <td className="num">{formatUSD(s.internetUSD)}</td>
+                  <td className="num">{formatUSD(s.managementOverheadUSD)}</td>
+                  <td className="num">{formatUSD(s.trainingReserveUSD)}</td>
+                  <td className="num" style={{ fontWeight: 700 }}>
+                    {formatUSD(s.totalMonthlyEmployerCostUSD)}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <p className="table-footnotes" style={{ marginTop: "0.5rem" }}>
-        * Calculated on basic salary assumed at 40% of gross CTC, per common
-        employer practice. EPF employer rate: 12%. Gratuity reserve: 4.81% of
-        basic (Payment of Gratuity Act formula: 15/26 × basic per year).
+        * Calculated on basic salary assumed at 40% of gross CTC. EPF employer
+        rate: 12%. Gratuity reserve: 4.81% of basic (Payment of Gratuity Act
+        formula: 15/26 × basic per year).
         <br />
         † Management overhead is an industry-typical estimate (7.5% of base
-        salary) for organizations using managed remote workforce providers. Not
-        a quoted rate from any specific provider. Professional tax of $2/month
-        (Karnataka/Maharashtra model) included in Total Monthly but shown as
-        rounding in column values.
+        salary). Not a quoted rate from any specific provider. Professional tax
+        of $2/month (Karnataka/Maharashtra model) included in Total Monthly.
       </p>
     </div>
   );
@@ -103,7 +110,7 @@ export default function IndiaTotalCostPage() {
   const articleSchema = generateArticleSchema({
     title: "Fully loaded employer cost for remote workers in India, 2026",
     description:
-      "Base salary plus EPF, gratuity reserve, equipment, internet stipend, management overhead, and training reserve. Monthly employer cost for 15 roles.",
+      "Two scenarios — local employer base and US employer remote base — both with full India statutory costs (EPF, gratuity), equipment, and overhead. Monthly employer cost for 15 roles.",
     datePublished: "2026-05-17",
     dateModified: "2026-05-17",
     url: "/total-cost/india",
@@ -112,7 +119,7 @@ export default function IndiaTotalCostPage() {
   const datasetSchema = generateDatasetSchema({
     name: "India Remote Workforce Total Employer Cost 2026",
     description:
-      "Fully loaded monthly employer cost for 15 remote-friendly roles in India, including statutory contributions, equipment, and overhead.",
+      "Dual-scenario fully loaded monthly employer cost for 15 remote-friendly roles in India. Local employer scenario and US employer remote scenario, both with statutory contributions, equipment, and overhead.",
     datePublished: "2026-05-17",
     dateModified: "2026-05-17",
     sources: [
@@ -127,6 +134,14 @@ export default function IndiaTotalCostPage() {
       {
         name: "Payment of Gratuity Act 1972",
         url: "https://empxtrack.com/blog/esi-pf-statutory-compliance/",
+      },
+      {
+        name: "Arc.dev — Remote Salaries in India",
+        url: "https://arc.dev/salaries",
+      },
+      {
+        name: "U.S. Bureau of Labor Statistics — OEWS May 2024",
+        url: "https://www.bls.gov/oes/current/oes_nat.htm",
       },
     ],
     url: "/total-cost/india",
@@ -146,7 +161,8 @@ export default function IndiaTotalCostPage() {
       <article>
         <div className="prose-rwci page-header">
           <p className="breadcrumb">
-            <a href="/">Home</a> / <a href="/total-cost/india">Total Cost — India</a>
+            <a href="/">Home</a> /{" "}
+            <a href="/total-cost/india">Total Cost — India</a>
           </p>
           <h1>Fully loaded employer cost for remote workers in India, 2026.</h1>
           <p
@@ -156,47 +172,39 @@ export default function IndiaTotalCostPage() {
               marginBottom: "0.75rem",
             }}
           >
-            Base salary plus statutory contributions, equipment, facilities,
-            and overhead, expressed as monthly employer cost in USD.
+            Two scenarios: local employer base and US employer remote base, both
+            with full India statutory costs, equipment, and overhead. Monthly
+            cost in USD.
           </p>
           <span className="last-updated">Last updated: May 2026</span>
         </div>
 
         <div className="prose-rwci">
           <p>
-            &quot;Fully loaded employer cost&quot; is the total monthly expenditure an
-            organization incurs to employ a remote worker in India, beyond the
-            base salary paid to the employee. It includes statutory
-            contributions mandated by Indian law, equipment provision, internet
-            reimbursement, and an estimate of management overhead. It does not
-            include income taxes paid by the employee, optional benefits such as
-            private health insurance, or equity compensation.
+            This page reports fully loaded monthly employer cost for remote
+            workers in India under two base salary scenarios. The{" "}
+            <strong>local scenario</strong> applies India statutory contributions
+            to the local employer median salary from{" "}
+            <a href="/salaries/india">Salaries — India</a> (Glassdoor/Payscale/Indeed
+            sources). The <strong>US remote scenario</strong> applies the same
+            statutory contributions to the US employer remote median salary from
+            the same page (Arc.dev or BLS OES May 2024 offshore-discount
+            estimate). The statutory contribution rates, equipment costs, and
+            overhead estimate are identical in both scenarios — only the base
+            salary differs.
           </p>
-
           <p>
-            For organizations employing workers directly in India, these
-            contributions are calculated and remitted by the employer. Managed
-            remote workforce providers such as{" "}
-            <a href="https://f5hiringsolutions.com" rel="noopener">
-              F5 Hiring Solutions
-            </a>{" "}
-            absorb statutory contributions, equipment, and overhead into a
-            single all-inclusive rate. The breakdown below reflects the
-            underlying components those providers must cover.
-          </p>
-
-          <p>
-            Base salary figures are drawn from{" "}
-            <a href="/salaries/india">Salaries — India</a> (median monthly USD
-            for each role). For full methodology, see{" "}
-            <a href="/methodology">Methodology</a>.
+            &quot;Fully loaded cost&quot; includes EPF, gratuity reserve,
+            professional tax, equipment amortization, internet stipend,
+            management overhead, and a training reserve. It does not include
+            income taxes paid by the employee, optional benefits, or equity.
+            For full methodology, see <a href="/methodology">Methodology</a>.
           </p>
 
           <h2>Statutory contributions — India</h2>
-
           <p>
-            The following statutory contributions apply to employers with
-            employees in India. Rates reflect 2025–2026 government schedules.
+            Rates reflect 2025–2026 government schedules and apply equally to
+            both scenarios.
           </p>
 
           <div className="table-scroll" style={{ marginBottom: "2rem" }}>
@@ -225,8 +233,8 @@ export default function IndiaTotalCostPage() {
                   <td className="num">12%</td>
                   <td>Basic salary</td>
                   <td>
-                    Employer 12% split: 3.67% to EPF, 8.33% to EPS (Employee
-                    Pension Scheme). Basic typically 40–50% of CTC.
+                    Employer 12% split: 3.67% to EPF, 8.33% to EPS. Basic
+                    modeled at 40% of CTC; effective rate on gross ≈ 4.8%.
                   </td>
                 </tr>
                 <tr>
@@ -239,9 +247,9 @@ export default function IndiaTotalCostPage() {
                   <td className="num">3.25%</td>
                   <td>Gross wages ≤ ₹21,000/month</td>
                   <td>
-                    ESI does not apply to roles in this dataset. All roles
-                    report gross wages above the ₹21,000 threshold at
-                    international remote rates.
+                    ESI does not apply to any role in this dataset. All roles
+                    exceed the ₹21,000 threshold at international remote
+                    compensation levels.
                   </td>
                 </tr>
                 <tr>
@@ -254,8 +262,8 @@ export default function IndiaTotalCostPage() {
                   <td className="num">4.81% of basic</td>
                   <td>Basic salary</td>
                   <td>
-                    Formula: 15/26 × basic salary per year × years of service.
-                    Monthly reserve: 4.81% of basic ≈ 1.92% of gross CTC.
+                    Formula: 15/26 × basic per year × years of service. Monthly
+                    reserve: 4.81% of basic ≈ 1.92% of gross CTC.
                   </td>
                 </tr>
                 <tr>
@@ -263,8 +271,8 @@ export default function IndiaTotalCostPage() {
                   <td className="num">≤ ₹2,400/year</td>
                   <td>State-levied</td>
                   <td>
-                    Karnataka and Maharashtra impose a maximum of ₹2,400/year
-                    (₹200/month). Modeled at $2/month.
+                    Karnataka and Maharashtra cap at ₹200/month. Modeled at
+                    $2/month for all roles.
                   </td>
                 </tr>
               </tbody>
@@ -286,45 +294,116 @@ export default function IndiaTotalCostPage() {
             </li>
             <li id="fn-tc-in-3">
               Payment of Gratuity Act 1972 (amended). Greythr — Decoding PF,
-              ESI and Gratuity Regulations. greythr.com/blog/decoding-pf-esi-and-gratuity-regulations/.
+              ESI and Gratuity Regulations.
+              greythr.com/blog/decoding-pf-esi-and-gratuity-regulations/.
               Accessed May 2026.
             </li>
           </ol>
 
-          <div className="callout">
-            <p>
-              <strong>Methodology note:</strong> EPF is calculated on basic
-              salary, modeled at 40% of gross CTC. Effective EPF rate on gross
-              CTC: approximately 4.8%. Gratuity reserve effective rate on gross
-              CTC: approximately 1.9%. Management overhead (7.5%) is an
-              industry-typical estimate for managed-service arrangements and
-              should be understood as approximate. Equipment is amortized over
-              36 months at Dell India/Lenovo India pricing (accessed May 2026).
-            </p>
-          </div>
-
-          <h2>Monthly employer cost by role</h2>
+          <h2>Scenario comparison — all roles</h2>
           <p>
-            The tables below apply the statutory and additional cost components
-            to the median base salary for each role. Figures represent the
-            monthly total an employer incurs per worker at median pay, before
-            optional benefits.
+            The table below compares total monthly employer cost under both
+            scenarios for all 15 roles. Base salary source for each scenario is
+            documented in <a href="/salaries/india">Salaries — India</a>.
           </p>
         </div>
 
-        <div className="tables-rwci" style={{ marginTop: "1.5rem" }}>
-          <CostTable section="A" />
-          <CostTable section="B" />
-          <CostTable section="C" />
+        <div className="tables-rwci" style={{ marginTop: "1rem" }}>
+          <div style={{ marginBottom: "2.5rem" }}>
+            <div className="table-scroll">
+              <table>
+                <caption>
+                  India — scenario comparison, all 15 roles, monthly employer cost
+                  in USD, 2026. Local scenario uses Glassdoor/Payscale/Indeed
+                  median. US remote scenario uses Arc.dev / BLS OES May 2024
+                  offshore-discount median.
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th className="num">Local Base</th>
+                    <th className="num">Local Total</th>
+                    <th
+                      className="num"
+                      style={{ borderLeft: "2px solid #C9A961" }}
+                    >
+                      US Remote Base
+                    </th>
+                    <th className="num">US Remote Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {roles.map((role) => (
+                    <tr key={role.id}>
+                      <td>{role.role}</td>
+                      <td className="num">
+                        {formatUSD(role.local_scenario.baseSalaryUSD)}
+                      </td>
+                      <td className="num">
+                        {formatUSD(
+                          role.local_scenario.totalMonthlyEmployerCostUSD
+                        )}
+                      </td>
+                      <td
+                        className="num"
+                        style={{ borderLeft: "2px solid #C9A961" }}
+                      >
+                        {formatUSD(role.us_remote_scenario.baseSalaryUSD)}
+                      </td>
+                      <td className="num" style={{ fontWeight: 700 }}>
+                        {formatUSD(
+                          role.us_remote_scenario.totalMonthlyEmployerCostUSD
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="prose-rwci" style={{ marginBottom: "1rem" }}>
+            <h2>US employer remote scenario — detailed breakdown</h2>
+            <p>
+              The tables below show the full cost breakdown for the US employer
+              remote scenario by section. The local scenario follows the same
+              formula applied to the local base salary; detailed local breakdowns
+              are available on request or derivable from the salary and
+              statutory rate data on this page.
+            </p>
+
+            <div className="callout">
+              <p>
+                <strong>Methodology note:</strong> EPF is calculated on basic
+                salary modeled at 40% of gross CTC. Effective EPF rate on gross:
+                approximately 4.8%. Gratuity effective rate on gross:
+                approximately 1.9%. Management overhead (7.5%) is an
+                industry-typical estimate for managed-service arrangements.
+                Equipment is amortized over 36 months at Dell India/Lenovo India
+                pricing (accessed May 2026).
+              </p>
+            </div>
+          </div>
+
+          <UsRemoteDetailTable section="A" />
+          <UsRemoteDetailTable section="B" />
+          <UsRemoteDetailTable section="C" />
         </div>
 
         <div className="prose-rwci" style={{ paddingBottom: "3rem" }}>
-          <p style={{ fontSize: "0.875rem", color: "#6b6354", fontStyle: "italic" }}>
-            Edited by Joel Deutsch, Remote Workforce Cost Index. Statutory
-            rates sourced from EPFO and ESIC (May 2026). Salary data from
-            Glassdoor India, Payscale India, Indeed India, and Arc.dev (May
-            2026). See <a href="/methodology">Methodology</a> for full source
-            list and limitations.
+          <p
+            style={{
+              fontSize: "0.875rem",
+              color: "#6b6354",
+              fontStyle: "italic",
+            }}
+          >
+            Edited by Joel Deutsch, Remote Workforce Cost Index. Statutory rates
+            sourced from EPFO and ESIC (May 2026). US employer remote salary
+            data from Arc.dev and BLS OES (May 2026). Local salary data from
+            Glassdoor India, Payscale India, and Indeed India (May 2026). See{" "}
+            <a href="/methodology">Methodology</a> for full source list and
+            limitations.
           </p>
         </div>
       </article>

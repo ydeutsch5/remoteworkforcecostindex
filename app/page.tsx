@@ -20,26 +20,28 @@ const dataCards = [
     label: "Salaries",
     title: "India — 15 roles",
     description:
-      "Monthly base compensation ranges for remote workers in India.",
+      "Local employer and US employer remote monthly compensation. Glassdoor/Payscale/Indeed vs. Arc.dev/BLS OES. Offshore discount % per role.",
   },
   {
     href: "/salaries/philippines",
     label: "Salaries",
     title: "Philippines — 15 roles",
     description:
-      "Monthly base compensation ranges for remote workers in the Philippines.",
+      "Local employer and US employer remote monthly compensation. Glassdoor/Payscale/Indeed vs. Arc.dev/BLS OES. Offshore discount % per role.",
   },
   {
     href: "/total-cost/india",
     label: "Total Cost",
     title: "India — Fully loaded cost",
-    description: "Base salary plus EPF, gratuity, equipment, overhead, and more.",
+    description:
+      "Two scenarios: local base and US remote base, both with EPF, gratuity, equipment, and overhead.",
   },
   {
     href: "/total-cost/philippines",
     label: "Total Cost",
     title: "Philippines — Fully loaded cost",
-    description: "Base salary plus SSS, PhilHealth, 13th month, equipment, and more.",
+    description:
+      "Two scenarios: local base and US remote base, both with SSS, PhilHealth, 13th month, and overhead.",
   },
   {
     href: "/methodology",

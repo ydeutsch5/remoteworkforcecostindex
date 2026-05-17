@@ -522,6 +522,15 @@ sup a {
   margin-bottom: 0.25rem;
 }
 
+/* Sticky first column on horizontally scrollable tables */
+.table-scroll table td:first-child,
+.table-scroll table th:first-child {
+  position: sticky;
+  left: 0;
+  background: inherit;
+  z-index: 1;
+}
+
 /* ─── Blockquote ─────────────────────────────────────────────── */
 
 blockquote {

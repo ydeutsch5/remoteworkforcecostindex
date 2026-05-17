@@ -5,7 +5,7 @@
     "exchangeRateUSD": 96.28,
     "exchangeRateDate": "2026-05-16",
     "lastUpdated": "May 2026",
-    "methodology": "Base salary drawn from salaries-india.json (median monthly USD). Statutory contributions calculated on base salary at rates sourced from EPFO, ESIC, and Payment of Gratuity Act (all accessed May 2026). EPF calculated on basic salary assumed at 40% of gross CTC (common employer practice). ESI does not apply to any role in this dataset as all gross wages exceed the ₹21,000/month statutory threshold. Gratuity accrual modeled at 4.81% of basic salary per Payment of Gratuity Act formula (15/26 × basic per year). Equipment amortized over 36 months. Management overhead is an industry-typical estimate (5–10%) for organizations using managed remote workforce providers; this figure is not a quoted rate from any specific provider."
+    "methodology": "Each role reports two fully-loaded employer cost scenarios. The local_scenario uses the local employer base salary from salaries-india.json (Glassdoor/Payscale/Indeed sources). The us_remote_scenario uses the US employer remote base salary from salaries-india.json (Arc.dev or BLS OES May 2024 offshore-discount estimate). Both scenarios apply identical statutory rates and operational costs. EPF calculated at 12% of basic salary (modeled at 40% of gross CTC = 4.8% effective on gross). ESI does not apply; all roles exceed the ₹21,000/month statutory threshold. Gratuity accrual modeled at 4.81% of basic salary (= 1.924% of gross). Equipment amortized over 36 months. Management overhead is an industry-typical estimate (7.5% of base salary) for organizations using managed remote workforce providers."
   },
   "statutoryRates": {
     "EPF": {
@@ -55,7 +55,7 @@
       "note": "Typical employer reimbursement for broadband internet for remote workers in India."
     },
     "managementOverheadEstimate": {
-      "rate": "5–10% of base salary",
+      "rate": "7.5% of base salary",
       "rateForCalculation": 0.075,
       "note": "Industry-typical estimate for organizations that use managed remote workforce providers. This is not a quoted rate from any specific provider. Organizations managing workers directly incur equivalent costs in HR, payroll administration, compliance, and onboarding overhead."
     },
@@ -70,211 +70,406 @@
       "id": "software-engineer-mid",
       "role": "Software Engineer, mid-level",
       "section": "A",
-      "baseSalaryUSD": 1800,
-      "epfEmployerUSD": 86,
-      "gratuityReserveUSD": 35,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 135,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 2143
+      "local_scenario": {
+        "baseSalaryUSD": 1800,
+        "epfEmployerUSD": 86,
+        "gratuityReserveUSD": 35,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 135,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2143
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 4077,
+        "epfEmployerUSD": 196,
+        "gratuityReserveUSD": 78,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 306,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 4744
+      }
     },
     {
       "id": "senior-software-engineer",
       "role": "Senior Software Engineer",
       "section": "A",
-      "baseSalaryUSD": 2900,
-      "epfEmployerUSD": 139,
-      "gratuityReserveUSD": 56,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 218,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 3400
+      "local_scenario": {
+        "baseSalaryUSD": 2900,
+        "epfEmployerUSD": 139,
+        "gratuityReserveUSD": 56,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 218,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 3400
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 5229,
+        "epfEmployerUSD": 251,
+        "gratuityReserveUSD": 101,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 392,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 6060
+      }
     },
     {
       "id": "full-stack-developer",
       "role": "Full-Stack Developer",
       "section": "A",
-      "baseSalaryUSD": 2000,
-      "epfEmployerUSD": 96,
-      "gratuityReserveUSD": 38,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 150,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 2371
+      "local_scenario": {
+        "baseSalaryUSD": 2000,
+        "epfEmployerUSD": 96,
+        "gratuityReserveUSD": 38,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 150,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2371
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 4020,
+        "epfEmployerUSD": 193,
+        "gratuityReserveUSD": 77,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 302,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 4679
+      }
     },
     {
       "id": "devops-engineer",
       "role": "DevOps Engineer",
       "section": "A",
-      "baseSalaryUSD": 2400,
-      "epfEmployerUSD": 115,
-      "gratuityReserveUSD": 46,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 180,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 2828
+      "local_scenario": {
+        "baseSalaryUSD": 2400,
+        "epfEmployerUSD": 115,
+        "gratuityReserveUSD": 46,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 180,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2828
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 4241,
+        "epfEmployerUSD": 204,
+        "gratuityReserveUSD": 82,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 318,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 4932
+      }
     },
     {
       "id": "data-analyst",
       "role": "Data Analyst",
       "section": "A",
-      "baseSalaryUSD": 1400,
-      "epfEmployerUSD": 67,
-      "gratuityReserveUSD": 27,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 105,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 1686
+      "local_scenario": {
+        "baseSalaryUSD": 1400,
+        "epfEmployerUSD": 67,
+        "gratuityReserveUSD": 27,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 105,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 1686
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 3000,
+        "epfEmployerUSD": 144,
+        "gratuityReserveUSD": 58,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 225,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 3514
+      }
     },
     {
       "id": "data-scientist",
       "role": "Data Scientist",
       "section": "A",
-      "baseSalaryUSD": 2100,
-      "epfEmployerUSD": 101,
-      "gratuityReserveUSD": 40,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 158,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 2486
+      "local_scenario": {
+        "baseSalaryUSD": 2100,
+        "epfEmployerUSD": 101,
+        "gratuityReserveUSD": 40,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 158,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2486
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 4207,
+        "epfEmployerUSD": 202,
+        "gratuityReserveUSD": 81,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 316,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 4893
+      }
     },
     {
       "id": "qa-engineer",
       "role": "QA Engineer",
       "section": "A",
-      "baseSalaryUSD": 1100,
-      "epfEmployerUSD": 53,
-      "gratuityReserveUSD": 21,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 83,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 1344
+      "local_scenario": {
+        "baseSalaryUSD": 1100,
+        "epfEmployerUSD": 53,
+        "gratuityReserveUSD": 21,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 83,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 1344
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 2039,
+        "epfEmployerUSD": 98,
+        "gratuityReserveUSD": 39,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 153,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2416
+      }
     },
     {
       "id": "ai-ml-engineer",
       "role": "AI / ML Engineer",
       "section": "A",
-      "baseSalaryUSD": 3500,
-      "epfEmployerUSD": 168,
-      "gratuityReserveUSD": 67,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 263,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 4085
+      "local_scenario": {
+        "baseSalaryUSD": 3500,
+        "epfEmployerUSD": 168,
+        "gratuityReserveUSD": 67,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 263,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 4085
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 4800,
+        "epfEmployerUSD": 230,
+        "gratuityReserveUSD": 92,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 360,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 5569
+      }
     },
     {
       "id": "mobile-developer",
       "role": "Mobile Developer (iOS / Android)",
       "section": "A",
-      "baseSalaryUSD": 2100,
-      "epfEmployerUSD": 101,
-      "gratuityReserveUSD": 40,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 158,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 2486
+      "local_scenario": {
+        "baseSalaryUSD": 2100,
+        "epfEmployerUSD": 101,
+        "gratuityReserveUSD": 40,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 158,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2486
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 3964,
+        "epfEmployerUSD": 190,
+        "gratuityReserveUSD": 76,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 297,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 4614
+      }
     },
     {
       "id": "ui-ux-designer",
       "role": "UI / UX Designer",
       "section": "B",
-      "baseSalaryUSD": 1300,
-      "epfEmployerUSD": 62,
-      "gratuityReserveUSD": 25,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 98,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 1572
+      "local_scenario": {
+        "baseSalaryUSD": 1300,
+        "epfEmployerUSD": 62,
+        "gratuityReserveUSD": 25,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 98,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 1572
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 3000,
+        "epfEmployerUSD": 144,
+        "gratuityReserveUSD": 58,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 225,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 3514
+      }
     },
     {
       "id": "product-manager",
       "role": "Product Manager",
       "section": "B",
-      "baseSalaryUSD": 3000,
-      "epfEmployerUSD": 144,
-      "gratuityReserveUSD": 58,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 225,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 3514
+      "local_scenario": {
+        "baseSalaryUSD": 3000,
+        "epfEmployerUSD": 144,
+        "gratuityReserveUSD": 58,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 225,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 3514
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 5000,
+        "epfEmployerUSD": 240,
+        "gratuityReserveUSD": 96,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 375,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 5798
+      }
     },
     {
       "id": "project-manager",
       "role": "Project Manager",
       "section": "B",
-      "baseSalaryUSD": 2000,
-      "epfEmployerUSD": 96,
-      "gratuityReserveUSD": 38,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 150,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 2371
+      "local_scenario": {
+        "baseSalaryUSD": 2000,
+        "epfEmployerUSD": 96,
+        "gratuityReserveUSD": 38,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 150,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2371
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 3100,
+        "epfEmployerUSD": 149,
+        "gratuityReserveUSD": 60,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 233,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 3629
+      }
     },
     {
       "id": "customer-support-specialist",
       "role": "Customer Support Specialist",
       "section": "B",
-      "baseSalaryUSD": 700,
-      "epfEmployerUSD": 34,
-      "gratuityReserveUSD": 13,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 53,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 887
+      "local_scenario": {
+        "baseSalaryUSD": 700,
+        "epfEmployerUSD": 34,
+        "gratuityReserveUSD": 13,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 53,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 887
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 1150,
+        "epfEmployerUSD": 55,
+        "gratuityReserveUSD": 22,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 86,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 1400
+      }
     },
     {
       "id": "medical-billing-specialist",
       "role": "Medical Billing Specialist",
       "section": "C",
-      "baseSalaryUSD": 800,
-      "epfEmployerUSD": 38,
-      "gratuityReserveUSD": 15,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 60,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 1000
+      "local_scenario": {
+        "baseSalaryUSD": 800,
+        "epfEmployerUSD": 38,
+        "gratuityReserveUSD": 15,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 60,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 1000
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 1350,
+        "epfEmployerUSD": 65,
+        "gratuityReserveUSD": 26,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 101,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 1629
+      }
     },
     {
       "id": "cad-drafter",
       "role": "CAD Drafter",
       "section": "C",
-      "baseSalaryUSD": 650,
-      "epfEmployerUSD": 31,
-      "gratuityReserveUSD": 13,
-      "professionalTaxUSD": 2,
-      "equipmentUSD": 45,
-      "internetUSD": 15,
-      "managementOverheadUSD": 49,
-      "trainingReserveUSD": 25,
-      "totalMonthlyEmployerCostUSD": 830
+      "local_scenario": {
+        "baseSalaryUSD": 650,
+        "epfEmployerUSD": 31,
+        "gratuityReserveUSD": 13,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 49,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 830
+      },
+      "us_remote_scenario": {
+        "baseSalaryUSD": 1800,
+        "epfEmployerUSD": 86,
+        "gratuityReserveUSD": 35,
+        "professionalTaxUSD": 2,
+        "equipmentUSD": 45,
+        "internetUSD": 15,
+        "managementOverheadUSD": 135,
+        "trainingReserveUSD": 25,
+        "totalMonthlyEmployerCostUSD": 2143
+      }
     }
   ]
 }

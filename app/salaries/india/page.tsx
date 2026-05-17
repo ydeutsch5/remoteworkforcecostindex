@@ -6,13 +6,35 @@ import salariesData from "@/data/salaries-india.json";
 export const metadata: Metadata = {
   title: "Salary ranges for remote workers in India, 2026",
   description:
-    "Median monthly compensation and 30th–70th percentile ranges for 15 remote-friendly roles in India. Sources: Glassdoor, Payscale, Indeed, Arc.dev. Data accessed May 2026.",
+    "Local employer and US employer remote monthly compensation for 15 remote-friendly roles in India. Sources: Glassdoor, Payscale, Indeed, Arc.dev, BLS OES. Data accessed May 2026.",
   openGraph: {
     title: "India Remote Worker Salaries 2026 | Remote Workforce Cost Index",
     description:
-      "Monthly salary ranges for 15 roles: Software Engineer, DevOps, Data Scientist, AI/ML Engineer, UX Designer, and more.",
+      "Dual-market salary data: local employer rates and US employer remote rates for 15 roles in India.",
     url: "https://remoteworkforcecostindex.com/salaries/india",
   },
+};
+
+type LocalEmployer = {
+  medianMonthlyUSD: number;
+  percentile30USD: number;
+  percentile70USD: number;
+  medianMonthlyINR: number;
+  percentile30INR: number;
+  percentile70INR: number;
+  caveats: string;
+  sources: { name: string; url: string; accessed: string }[];
+};
+
+type UsEmployerRemote = {
+  medianMonthlyUSD: number;
+  percentile30USD: number;
+  percentile70USD: number;
+  source_name: string;
+  source_url: string;
+  accessed: string;
+  outlier_flag: boolean;
+  source_note: string | null;
 };
 
 type Role = {
@@ -20,15 +42,9 @@ type Role = {
   role: string;
   section: string;
   yearsExperience: string;
-  medianMonthlyUSD: number;
-  percentile30USD: number;
-  percentile70USD: number;
-  medianMonthlyINR: number;
-  percentile30INR: number;
-  percentile70INR: number;
-  sampleSizeNote: string;
-  caveats: string;
-  sources: { name: string; url: string; accessed: string }[];
+  local_employer: LocalEmployer;
+  us_employer_remote: UsEmployerRemote;
+  offshore_pct: number;
 };
 
 const roles: Role[] = salariesData.roles as Role[];
@@ -55,22 +71,31 @@ function RoleTable({
       <div className="table-scroll">
         <table>
           <caption>
-            Section {section} — {sectionLabels[section]}, monthly compensation
-            in USD, India remote workforce, 2026.
+            Section {section} — {sectionLabels[section]}, monthly base
+            compensation in USD, India, 2026. Local = Glassdoor/Payscale/Indeed.
+            US Remote = Arc.dev or BLS OES May 2024 offshore-discount estimate.
           </caption>
           <thead>
             <tr>
               <th>Role</th>
-              <th>Experience</th>
-              <th className="num">Median Monthly (USD)</th>
-              <th className="num">30th–70th Pct (USD)</th>
+              <th>Exp</th>
+              <th className="num">Local Median (USD)</th>
+              <th className="num">Local Range (USD)</th>
+              <th
+                className="num"
+                style={{ borderLeft: "2px solid #C9A961" }}
+              >
+                US Remote Median (USD)
+              </th>
+              <th className="num">US Remote Range (USD)</th>
               <th className="num">Native Range (INR)</th>
+              <th className="num">Offshore %</th>
               <th>Sources</th>
             </tr>
           </thead>
           <tbody>
             {sectionRoles.map((role) => {
-              const roleFootnotes = role.sources.map((src) => {
+              const localFootnotes = role.local_employer.sources.map((src) => {
                 footnoteIndex++;
                 footnotes.push({
                   num: footnoteIndex,
@@ -79,28 +104,60 @@ function RoleTable({
                 return footnoteIndex;
               });
 
+              footnoteIndex++;
+              const usRemoteFootnoteNum = footnoteIndex;
+              const usRemoteSource = role.us_employer_remote;
+              footnotes.push({
+                num: usRemoteFootnoteNum,
+                content: `${usRemoteSource.source_name}, accessed ${usRemoteSource.accessed}. ${usRemoteSource.source_url}${usRemoteSource.source_note ? " Note: " + usRemoteSource.source_note : ""}`,
+              });
+
               return (
                 <tr key={role.id}>
                   <td>{role.role}</td>
                   <td>{role.yearsExperience} yrs</td>
-                  <td className="num">{formatUSD(role.medianMonthlyUSD)}</td>
                   <td className="num">
-                    {formatUSD(role.percentile30USD)}–
-                    {formatUSD(role.percentile70USD)}
+                    {formatUSD(role.local_employer.medianMonthlyUSD)}
                   </td>
                   <td className="num">
-                    {formatINR(role.percentile30INR)}–
-                    {formatINR(role.percentile70INR)}
+                    {formatUSD(role.local_employer.percentile30USD)}–
+                    {formatUSD(role.local_employer.percentile70USD)}
                   </td>
+                  <td
+                    className="num"
+                    style={{ borderLeft: "2px solid #C9A961" }}
+                  >
+                    {formatUSD(role.us_employer_remote.medianMonthlyUSD)}
+                    {role.us_employer_remote.outlier_flag && (
+                      <sup style={{ color: "#C9A961", marginLeft: "2px" }}>
+                        †
+                      </sup>
+                    )}
+                  </td>
+                  <td className="num">
+                    {formatUSD(role.us_employer_remote.percentile30USD)}–
+                    {formatUSD(role.us_employer_remote.percentile70USD)}
+                  </td>
+                  <td className="num">
+                    {formatINR(role.local_employer.percentile30INR)}–
+                    {formatINR(role.local_employer.percentile70INR)}
+                  </td>
+                  <td className="num">{role.offshore_pct}%</td>
                   <td>
-                    {roleFootnotes.map((n, i) => (
+                    {localFootnotes.map((n, i) => (
                       <span key={n}>
                         <sup>
                           <a href={`#fn-in-${n}`}>[{n}]</a>
                         </sup>
-                        {i < roleFootnotes.length - 1 ? " " : ""}
+                        {i < localFootnotes.length - 1 ? " " : ""}
                       </span>
                     ))}
+                    {" "}
+                    <sup>
+                      <a href={`#fn-in-${usRemoteFootnoteNum}`}>
+                        [{usRemoteFootnoteNum}]
+                      </a>
+                    </sup>
                   </td>
                 </tr>
               );
@@ -108,6 +165,24 @@ function RoleTable({
           </tbody>
         </table>
       </div>
+      {footnotes.some((fn) =>
+        sectionRoles.some(
+          (r) => r.us_employer_remote.outlier_flag
+        )
+      ) && (
+        <p
+          style={{
+            fontSize: "11.5px",
+            color: "rgba(10, 37, 64, 0.75)",
+            fontFamily: "var(--font-mono), 'Courier New', monospace",
+            marginTop: "0.35rem",
+            marginBottom: "0.5rem",
+          }}
+        >
+          † US employer remote median falls outside the expected offshore discount
+          band for this role. See footnote for detail.
+        </p>
+      )}
       <ol
         className="table-footnotes"
         start={footnoteOffset + 1}
@@ -127,7 +202,7 @@ export default function IndiaSalariesPage() {
   const articleSchema = generateArticleSchema({
     title: "Salary ranges for remote workers in India, 2026",
     description:
-      "Median monthly compensation and 30th–70th percentile ranges across 15 remote-friendly roles in India.",
+      "Local employer and US employer remote monthly compensation for 15 remote-friendly roles in India.",
     datePublished: "2026-05-17",
     dateModified: "2026-05-17",
     url: "/salaries/india",
@@ -136,7 +211,7 @@ export default function IndiaSalariesPage() {
   const datasetSchema = generateDatasetSchema({
     name: "India Remote Workforce Salary Ranges 2026",
     description:
-      "Monthly base salary ranges (30th–70th percentile) for 15 remote-friendly roles in India, expressed in USD and INR.",
+      "Dual-market monthly base salary data for 15 remote-friendly roles in India: local employer rates (Glassdoor/Payscale/Indeed) and US employer remote rates (Arc.dev/BLS OES).",
     datePublished: "2026-05-17",
     dateModified: "2026-05-17",
     sources: [
@@ -144,6 +219,10 @@ export default function IndiaSalariesPage() {
       { name: "Payscale India", url: "https://www.payscale.com" },
       { name: "Indeed India", url: "https://in.indeed.com" },
       { name: "Arc.dev", url: "https://arc.dev" },
+      {
+        name: "U.S. Bureau of Labor Statistics — OEWS May 2024",
+        url: "https://www.bls.gov/oes/current/oes_nat.htm",
+      },
     ],
     url: "/salaries/india",
   });
@@ -172,62 +251,57 @@ export default function IndiaSalariesPage() {
               marginBottom: "0.75rem",
             }}
           >
-            Median monthly compensation and 30th–70th percentile ranges across
-            15 remote-friendly roles.
+            Local employer and US employer remote monthly compensation across 15
+            remote-friendly roles.
           </p>
           <span className="last-updated">Last updated: May 2026</span>
         </div>
 
         <div className="prose-rwci">
           <p>
-            This page reports monthly base salary ranges for remote workers
-            based in India and employed by international (primarily US-based)
-            organizations. Figures represent what foreign employers pay; they
-            are consistently higher than what local Indian companies report for
-            the same roles — typically by 40–70 percent. Local Indian market
-            data from Payscale India and Glassdoor India is cited in the
-            footnotes as context.
+            This page reports monthly base salary data for remote workers based
+            in India across two distinct market contexts. The{" "}
+            <strong>local employer</strong> column reflects compensation paid by
+            Indian companies, sourced from Glassdoor India, Payscale India, and
+            Indeed India. The <strong>US employer remote</strong> column reflects
+            compensation paid by US-based employers for the same roles performed
+            remotely from India, sourced from Arc.dev or estimated from BLS OES
+            May 2024 offshore discount bands where direct data is unavailable.
+            These two series are not interchangeable: the same role title
+            commands materially different pay depending on the employer&apos;s
+            country of domicile.
           </p>
           <p>
-            All figures are expressed in USD. INR equivalents appear in the
-            native range column, calculated at 1 USD = 96.28 INR (Exchange-Rates.org,
-            May 16, 2026). Data was collected in May 2026 from Glassdoor India,
-            Payscale India, Indeed India, Arc.dev, Levels.fyi, SalaryExpert, and
-            Second Talent. Sample sizes are not uniformly available across these
-            sources; where unavailable, the source column notes this. The
-            30th–70th percentile spread is estimated from the aggregate
-            distribution across sources.
+            The <strong>offshore %</strong> column expresses the US employer
+            remote median as a percentage of the BLS OES May 2024 US domestic
+            median for the same occupational category. Roles marked{" "}
+            <span style={{ color: "#C9A961" }}>†</span> fall outside the
+            expected band for their experience tier. See{" "}
+            <a href="/methodology#offshore-discount">Methodology — offshore
+            discount</a> for band definitions and outlier handling.
           </p>
           <p>
-            Figures cover base salary only — equity, variable bonuses, and
-            employer-paid statutory contributions are excluded. For fully loaded
-            employer costs including EPF, gratuity, equipment, and overhead, see{" "}
-            <a href="/total-cost/india">Total Cost — India</a>. For full
-            methodology, see <a href="/methodology">Methodology</a>. Managed
+            All figures are expressed in USD. INR equivalents in the native
+            range column are calculated at 1 USD = 96.28 INR (Exchange-Rates.org,
+            May 16, 2026). Figures cover base salary only — equity, variable
+            bonuses, and employer statutory contributions are excluded. For fully
+            loaded employer costs including EPF, gratuity, equipment, and
+            overhead, see <a href="/total-cost/india">Total Cost — India</a>. For
+            full methodology, see <a href="/methodology">Methodology</a>. Managed
             remote workforce providers such as{" "}
             <a href="https://f5hiringsolutions.com" rel="noopener">
               F5 Hiring Solutions
             </a>{" "}
-            absorb statutory contributions, equipment, and overhead into a
-            single rate; the figures below reflect the base salary component
-            those providers must cover.
+            absorb statutory contributions, equipment, and overhead into a single
+            rate; the figures in the US-employer column reflect the base salary
+            component those providers must cover.
           </p>
-
-          <div className="callout">
-            <p>
-              <strong>Methodology note:</strong> Compensation ranges in the
-              tables below reflect base salary only. See{" "}
-              <a href="/total-cost/india">/total-cost/india</a> for fully loaded
-              employer cost figures including EPF, gratuity reserve, equipment,
-              and management overhead.
-            </p>
-          </div>
         </div>
 
         <div className="tables-rwci" style={{ marginTop: "2rem" }}>
           <RoleTable section="A" footnoteOffset={0} />
-          <RoleTable section="B" footnoteOffset={18} />
-          <RoleTable section="C" footnoteOffset={26} />
+          <RoleTable section="B" footnoteOffset={27} />
+          <RoleTable section="C" footnoteOffset={39} />
         </div>
 
         <div className="prose-rwci" style={{ paddingBottom: "3rem" }}>
